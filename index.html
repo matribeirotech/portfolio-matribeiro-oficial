@@ -2,479 +2,1199 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matheus Ribeiro | Desenvolvedor Full Stack · Soluções Industriais</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#07090e">
+    <title>Matheus Ribeiro | Software Engineer · Produtos Digitais, SaaS &amp; Open Source</title>
 
-    <meta name="description" content="Desenvolvedor full stack com seis anos de chão de fábrica. Construo back-end, front-end e integrações que transformam rotina manual em sistema — do orçamento comercial ao apontamento de produção.">
+    <meta name="description" content="Engenheiro de Software Full Stack e criador de produtos digitais de alta performance. Fundador técnico no ecossistema Lypsyos (Zenda CRM &amp; Automação WhatsApp) e autor do projeto open source monitor-cyd-resources.">
     <meta name="author" content="Matheus Ribeiro dos Santos">
+    <meta name="keywords" content="Matheus Ribeiro, Software Engineer, Full Stack Developer, Lypsyos, Zenda CRM, Open Source, monitor-cyd-resources, React, TypeScript, Python, FastAPI, Flutter, Flet, ESP32">
     <link rel="canonical" href="https://matribeiro.tech/">
 
-    <!-- Prévia ao compartilhar o link (LinkedIn, WhatsApp) -->
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Matheus Ribeiro | Desenvolvedor Full Stack · Soluções Industriais">
-    <meta property="og:description" content="Sistemas que eliminam gargalos operacionais. Back-end, front-end e integrações para indústria.">
+    <meta property="og:title" content="Matheus Ribeiro | Software Engineer · Produtos Digitais &amp; Open Source">
+    <meta property="og:description" content="Arquitetura de plataformas SaaS, automação em tempo real no ecossistema Lypsyos (Zenda) e engenharia open source embarcada.">
     <meta property="og:url" content="https://matribeiro.tech/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-pc-1.jpg">
     <meta property="og:locale" content="pt_BR">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Fontes do Figma -->
+    <!-- Google Fonts: Syne, Onest, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
-    <!-- Navegação -->
-    <nav id="navbar" class="navbar">
-        <div class="nav-container">
-            <!-- Logo -->
-            <div class="logo-group">
-                <div class="logo-icon">M</div>
-                <div class="logo-text">
-                    <div class="logo-name">MATHEUS RIBEIRO</div>
-                    <div class="logo-role">FULL STACK · INDÚSTRIA</div>
+    <!-- Background Ambient Layers -->
+    <div class="ambient-bg" aria-hidden="true">
+        <div class="ambient-orb orb-amber"></div>
+        <div class="ambient-orb orb-emerald"></div>
+        <div class="ambient-orb orb-blue"></div>
+        <div class="ambient-grid"></div>
+    </div>
+
+    <!-- ==================================================================
+         HEADER / NAVBAR (Desktop Top Bar + Mobile Native App Header)
+         ================================================================== -->
+    <header id="navbar" class="top-header">
+        <div class="container header-inner">
+            <a href="#hero" class="brand-identity" aria-label="Matheus Ribeiro - Ir para o topo">
+                <div class="brand-monogram">
+                    <span>M</span>
+                    <span class="brand-dot"></span>
                 </div>
-            </div>
+                <div class="brand-meta">
+                    <span class="brand-name">MATHEUS RIBEIRO</span>
+                    <span class="brand-tag">SOFTWARE ENGINEER · SAAS &amp; OSS</span>
+                </div>
+            </a>
 
-            <!-- Links Desktop -->
-            <div class="nav-links desktop-only">
-                <a href="#sobre">01 SOBRE</a>
-                <a href="#projetos">02 PROJETOS</a>
-                <a href="#contato">03 CONTATO</a>
-            </div>
+            <!-- Navegação Desktop -->
+            <nav class="desktop-nav" aria-label="Navegação Principal Desktop">
+                <a href="#hero" class="nav-pill active" data-section="hero">Início</a>
+                <a href="#lypsyos" class="nav-pill" data-section="lypsyos">
+                    <span>Ecossistema Lypsyos</span>
+                    <span class="pill-badge">Zenda</span>
+                </a>
+                <a href="#opensource" class="nav-pill" data-section="opensource">
+                    <span>Open Source</span>
+                    <span class="pill-badge pill-badge-amber">v3.0</span>
+                </a>
+                <a href="#sobre" class="nav-pill" data-section="sobre">Arquitetura &amp; Stack</a>
+                <a href="#contato" class="nav-pill" data-section="contato">Contato</a>
+            </nav>
 
-            <!-- Status -->
-            <div class="nav-status desktop-only">
-                <div class="status-dot"></div>
-                <span>DISPONÍVEL</span>
+            <!-- Ações Direita (Desktop + Mobile Quick Action) -->
+            <div class="header-actions">
+                <div class="live-availability" title="Disponível para novos projetos e oportunidades">
+                    <span class="pulse-dot"></span>
+                    <span class="availability-text">ONLINE · PRODUTOS &amp; OSS</span>
+                </div>
+                <button type="button" id="open-quick-sheet" class="mobile-sheet-trigger" aria-label="Abrir conexão rápida">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Conectar</span>
+                </button>
             </div>
-
-            <!-- Botão Mobile -->
-            <button id="mobile-menu-btn" class="mobile-only" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
-                </svg>
-            </button>
         </div>
+    </header>
 
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="mobile-menu hidden">
-            <a href="#sobre">01 SOBRE</a>
-            <a href="#projetos">02 PROJETOS</a>
-            <a href="#contato">03 CONTATO</a>
-        </div>
-    </nav>
+    <!-- ==================================================================
+         MAIN CONTENT
+         ================================================================== -->
+    <main id="main-content">
 
-    <main>
-        <!-- Seção Hero -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-grid">
+        <!-- 01. HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <!-- Mobile Quick Story Strip (Exclusivo Mobile App UX) -->
+                <div class="mobile-story-strip" aria-label="Destaques Rápidos">
+                    <a href="#lypsyos" class="story-chip story-chip-active">
+                        <span class="story-ring"><span class="story-icon">⚡</span></span>
+                        <span>Zenda CRM</span>
+                    </a>
+                    <a href="#opensource" class="story-chip">
+                        <span class="story-ring"><span class="story-icon">📟</span></span>
+                        <span>CYD Monitor v3</span>
+                    </a>
+                    <a href="https://lypsyos.com" target="_blank" rel="noopener" class="story-chip">
+                        <span class="story-ring"><span class="story-icon">🌐</span></span>
+                        <span>Lypsyos.com</span>
+                    </a>
+                    <a href="https://github.com/matribeirotech" target="_blank" rel="noopener" class="story-chip">
+                        <span class="story-ring"><span class="story-icon">🐙</span></span>
+                        <span>GitHub @z1po</span>
+                    </a>
+                </div>
 
-                    <!-- Lado Esquerdo: Textos -->
-                    <div class="hero-content">
-                        <div class="hero-eyebrow">
-                            <span class="eyebrow-symbol">$</span>
-                            <span class="eyebrow-text">transformo processos manuais em sistemas inteligentes</span>
+                <div class="hero-layout">
+                    <!-- Coluna Esquerda: Proposta de Valor -->
+                    <div class="hero-copy reveal-up">
+                        <div class="eyebrow-badge">
+                            <span class="eyebrow-led"></span>
+                            <span class="eyebrow-mono">PRODUCT ENGINEERING · SAAS MULTITENANT · OPEN SOURCE</span>
                         </div>
 
-                        <h1 class="hero-title">
-                            Desenvolvo<br>
-                            sistemas<br>
-                            <span class="text-accent">que eliminam</span><br>
-                            gargalos<br>
-                            operacionais.
+                        <h1 class="hero-headline">
+                            Engenharia de software para
+                            <span class="headline-gradient">produtos digitais</span>
+                            que operam em tempo real.
                         </h1>
 
-                        <p class="hero-subtitle">
-                            Desenvolvedor full stack com seis anos de chão de fábrica. Construo back-end, front-end e a camada de integração que costura os dois com a operação — do orçamento comercial ao apontamento de produção.
+                        <p class="hero-lead">
+                            Desenvolvedor Full Stack e arquiteto de produtos digitais. Construo plataformas SaaS escaláveis no ecossistema <strong>Lypsyos</strong> — como o <strong>Zenda CRM</strong> com automação 24/7 via WhatsApp — e ferramentas open source de baixa latência que conectam interfaces modernas em <strong>React, TypeScript e Flutter/Flet</strong> a microsserviços e hardware embarcado.
                         </p>
 
-                        <div class="hero-ctas">
-                            <a href="#projetos" class="btn-primary">
-                                VER PROJETOS <span>→</span>
+                        <div class="hero-cta-group">
+                            <a href="#lypsyos" class="btn-amber">
+                                <span>Explorar Ecossistema Lypsyos</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </a>
-                            <a href="#contato" class="btn-secondary">
-                                ENTRAR EM CONTATO
+                            <a href="#opensource" class="btn-glass">
+                                <span class="btn-dot-amber"></span>
+                                <span>Ver monitor-cyd-resources (v3.0)</span>
                             </a>
                         </div>
-                    </div>
 
-                    <!-- Lado Direito: Terminal e Stats -->
-                    <div class="hero-visuals desktop-only">
-                        <!-- Terminal Window -->
-                        <div class="terminal-window">
-                            <div class="terminal-header">
-                                <div class="mac-dots">
-                                    <div class="dot red"></div>
-                                    <div class="dot yellow"></div>
-                                    <div class="dot green"></div>
+                        <!-- Métricas de Engenharia de Produto -->
+                        <div class="hero-metrics-grid">
+                            <div class="metric-card spotlight-card">
+                                <div class="metric-top">
+                                    <span class="metric-value">&lt; 2s</span>
+                                    <span class="metric-tag metric-tag-emerald">ZENDA BOT</span>
                                 </div>
-                                <span class="terminal-title">PreparacaoCorteService.java</span>
+                                <p class="metric-desc">Latência de resposta autônoma no WhatsApp 24/7 com sync em tempo real</p>
                             </div>
-                            <div class="terminal-body">
-                                <div class="code-line"><span class="kw">import</span> automacao.<span class="id">DxfProcessor</span>;</div>
-                                <div class="code-line"><span class="kw">import</span> engenharia.<span class="id">MaquinaLaser</span>;</div>
-                                <div class="code-line">&nbsp;</div>
-                                <div class="code-line"><span class="text-accent">@Service</span></div>
-                                <div class="code-line"><span class="kw">public class</span> <span class="text-accent">PreparacaoCorteService</span> <span class="cm">{</span></div>
-                                <div class="code-line indent-1"><span class="kw">private final</span> <span class="id">DxfProcessor</span> processor = <span class="kw">new</span> <span class="id">DxfProcessor</span>(</div>
-                                <div class="code-line indent-2"><span class="str">"arquivos_cad"</span>, <span class="str">"espessura"</span>);</div>
-                                <div class="code-line">&nbsp;</div>
-                                <div class="code-line indent-1"><span class="text-accent">@Async</span></div>
-                                <div class="code-line indent-1"><span class="kw">public void</span> <span class="id">processar</span><span class="cm">() {</span></div>
-                                <div class="code-line indent-2">processor.forEach(lote -&gt;</div>
-                                <div class="code-line indent-3"><span class="kw">new</span> <span class="id">MaquinaLaser</span>().enviar(lote));</div>
-                                <div class="code-line indent-1"><span class="cm">}</span></div>
-                                <div class="code-line"><span class="cm">}</span></div>
-                                <div class="terminal-status">
-                                    <span class="text-accent">▶</span>
-                                    <span>Processing 500+ DXF/hr</span>
-                                    <span class="cursor-blink"></span>
+                            <div class="metric-card spotlight-card">
+                                <div class="metric-top">
+                                    <span class="metric-value">&lt; 50ms</span>
+                                    <span class="metric-tag metric-tag-amber">CYD SERIAL</span>
                                 </div>
+                                <p class="metric-desc">Troca de telas event-driven e repintura RGB565 via agente desktop Flet</p>
                             </div>
-                        </div>
-
-                        <!-- Stats Bar -->
-                        <div class="stats-bar">
-                            <div class="stat-item">
-                                <div class="stat-value">6 anos</div>
-                                <div class="stat-label">CHÃO DE FÁBRICA</div>
-                            </div>
-                            <div class="stat-item border-left">
-                                <div class="stat-value">~60%</div>
-                                <div class="stat-label">GANHO NO ORÇAMENTO</div>
-                            </div>
-                            <div class="stat-item border-left">
-                                <div class="stat-value">7</div>
-                                <div class="stat-label">SISTEMAS ENTREGUES</div>
+                            <div class="metric-card spotlight-card">
+                                <div class="metric-top">
+                                    <span class="metric-value">99.9%</span>
+                                    <span class="metric-tag metric-tag-blue">CLOUD RLS</span>
+                                </div>
+                                <p class="metric-desc">Uptime em arquitetura multitenant com isolamento PostgreSQL RLS</p>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Coluna Direita: Console de Arquitetura Interativo Multi-Aba -->
+                    <div class="hero-console-wrapper reveal-up" style="--delay: 0.12s;">
+                        <div class="ide-window spotlight-card">
+                            <div class="ide-header">
+                                <div class="ide-window-controls" aria-hidden="true">
+                                    <span class="win-dot win-close"></span>
+                                    <span class="win-dot win-min"></span>
+                                    <span class="win-dot win-max"></span>
+                                </div>
+                                <div class="ide-tabs" role="tablist" aria-label="Arquitetura em Tempo Real">
+                                    <button type="button" class="ide-tab active" role="tab" aria-selected="true" data-tab="zenda">
+                                        <span class="tab-dot tab-dot-emerald"></span>
+                                        zenda_engine.ts
+                                    </button>
+                                    <button type="button" class="ide-tab" role="tab" aria-selected="false" data-tab="cyd">
+                                        <span class="tab-dot tab-dot-amber"></span>
+                                        cyd_agent.py
+                                    </button>
+                                    <button type="button" class="ide-tab" role="tab" aria-selected="false" data-tab="rls">
+                                        <span class="tab-dot tab-dot-blue"></span>
+                                        security_rls.sql
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Painel 1: Zenda Engine -->
+                            <div class="ide-body active" id="tab-zenda" role="tabpanel">
+                                <div class="code-meta-bar">
+                                    <span>LYPSYOS // ZENDA AUTONOMOUS SCHEDULER</span>
+                                    <span class="meta-status-live">● WEBHOOK 24/7</span>
+                                </div>
+                                <pre class="code-block"><code><span class="c-kw">import</span> { WhatsAppStream, CRMLedger } <span class="c-kw">from</span> <span class="c-str">'@lypsyos/core'</span>;
+
+<span class="c-kw">export async function</span> <span class="c-fn">handleIncomingBooking</span>(event: <span class="c-type">WAWebhookPayload</span>) {
+  <span class="c-cm">// 1. Verifica disponibilidade real em milissegundos (Zero Double-Booking)</span>
+  <span class="c-kw">const</span> slots = <span class="c-kw">await</span> CRMLedger.<span class="c-fn">getAtomicSlots</span>({
+    tenantId: event.tenantId,
+    date: event.requestedDate,
+    isolation: <span class="c-str">'SERIALIZABLE_RLS'</span>
+  });
+
+  <span class="c-cm">// 2. Confirma reserva, atualiza faturamento e dispara Push PWA</span>
+  <span class="c-kw">const</span> booking = <span class="c-kw">await</span> WhatsAppStream.<span class="c-fn">confirmIn1800ms</span>(event.from, slots[<span class="c-num">0</span>]);
+  <span class="c-kw">return</span> CRMLedger.<span class="c-fn">syncGoogleCalendarAndNotify</span>(booking);
+}</code></pre>
+                                <div class="ide-telemetry-footer">
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">LATÊNCIA URA</span>
+                                        <span class="t-val text-emerald">1.8s avg</span>
+                                    </div>
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">CONFLITOS</span>
+                                        <span class="t-val text-amber">0.00%</span>
+                                    </div>
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">PWA SYNC</span>
+                                        <span class="t-val">WebPush + GCal</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Painel 2: CYD Monitor Agent -->
+                            <div class="ide-body" id="tab-cyd" role="tabpanel">
+                                <div class="code-meta-bar">
+                                    <span>OPEN SOURCE // MONITOR-CYD-RESOURCES v3.0</span>
+                                    <span class="meta-status-amber">● USB SERIAL 115200</span>
+                                </div>
+                                <pre class="code-block"><code><span class="c-kw">import</span> flet <span class="c-kw">as</span> ft
+<span class="c-kw">from</span> cyd_bridge <span class="c-kw">import</span> SerialDispatcher, MarketTickerStream
+
+<span class="c-kw">class</span> <span class="c-type">CYDControlCenter</span>:
+    <span class="c-cm"># Arquitetura No-Touch: 100% controlado pelo PC (&lt; 50ms)</span>
+    <span class="c-kw">async def</span> <span class="c-fn">push_live_frame</span>(self, screen_id: <span class="c-type">int</span>, theme_rgb565: <span class="c-type">str</span>):
+        quotes = <span class="c-kw">await</span> MarketTickerStream.<span class="c-fn">fetch</span>([<span class="c-str">"USD"</span>, <span class="c-str">"IBOV"</span>, <span class="c-str">"BTC"</span>, <span class="c-str">"SP500"</span>])
+        payload = self.telemetry.<span class="c-fn">pack_json</span>(
+            scr=screen_id, color=theme_rgb565, ticker_28fps=quotes
+        )
+        <span class="c-kw">await</span> SerialDispatcher.<span class="c-fn">write_non_blocking</span>(payload)</code></pre>
+                                <div class="ide-telemetry-footer">
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">TROCA DE TELA</span>
+                                        <span class="t-val text-amber">&lt; 50ms</span>
+                                    </div>
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">TICKER TAPE</span>
+                                        <span class="t-val text-emerald">28 FPS</span>
+                                    </div>
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">DISPLAY</span>
+                                        <span class="t-val">ESP32 320×240</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Painel 3: Security Guard RLS -->
+                            <div class="ide-body" id="tab-rls" role="tabpanel">
+                                <div class="code-meta-bar">
+                                    <span>LYPSYOS SECURITY GUARD // MULTITENANT ISOLATION</span>
+                                    <span class="meta-status-blue">● POSTGRESQL RLS</span>
+                                </div>
+                                <pre class="code-block"><code><span class="c-cm">-- Isolamento bancário multitenant por organização no ecossistema Lypsyos</span>
+<span class="c-kw">ALTER TABLE</span> public.zenda_appointments <span class="c-kw">ENABLE ROW LEVEL SECURITY</span>;
+
+<span class="c-kw">CREATE POLICY</span> <span class="c-str">"tenant_strict_isolation_policy"</span>
+<span class="c-kw">ON</span> public.zenda_appointments
+<span class="c-kw">AS RESTRICTIVE FOR ALL</span>
+<span class="c-kw">TO</span> authenticated
+<span class="c-kw">USING</span> (
+  tenant_id = (auth.<span class="c-fn">jwt</span>() -&gt;&gt; <span class="c-str">'org_tenant_id'</span>)::uuid
+);</code></pre>
+                                <div class="ide-telemetry-footer">
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">ISOLAMENTO</span>
+                                        <span class="t-val text-emerald">100% RLS</span>
+                                    </div>
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">AUTH</span>
+                                        <span class="t-val text-amber">JWT + TLS 1.3</span>
+                                    </div>
+                                    <div class="telemetry-pill">
+                                        <span class="t-label">PROTEÇÃO</span>
+                                        <span class="t-val">Anti-Bot Guard</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Sobre -->
-        <section id="sobre" class="content-section">
+        <!-- ==================================================================
+             02. ECOSSISTEMA LYPSYOS & PRODUTO ZENDA
+             ================================================================== -->
+        <section id="lypsyos" class="section-block">
             <div class="container">
-
-                <div class="section-label fade-in">
-                    <span class="label-number">01</span>
-                    <div class="label-line"></div>
-                    <span class="label-text">SOBRE</span>
+                <div class="section-header reveal-up">
+                    <div class="section-index">
+                        <span class="index-num">01</span>
+                        <span class="index-divider"></span>
+                        <span class="index-label">ECOSSISTEMA LYPSYOS · SAAS &amp; AUTOMAÇÃO INTELIGENTE</span>
+                    </div>
+                    <div class="section-title-row">
+                        <div>
+                            <h2 class="section-title">
+                                Arquitetura de produtos na <span class="text-gradient-amber">Lypsyos</span>
+                            </h2>
+                            <p class="section-subtitle">
+                                Criação e engenharia de ponta a ponta das soluções disponíveis em <a href="https://lypsyos.com" target="_blank" rel="noopener" class="inline-link">lypsyos.com</a> — plataformas SaaS projetadas para substituir rotinas manuais por atendimento autônomo, previsibilidade financeira e experiência mobile-first.
+                            </p>
+                        </div>
+                        <a href="https://lypsyos.com" target="_blank" rel="noopener" class="btn-outline-external">
+                            <span>Acessar lypsyos.com</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="about-grid">
-                    <div class="about-bio fade-in">
-                        <h2 class="section-heading">
-                            Sistemas<br>
-                            <span class="text-accent">confiáveis</span><br>
-                            desde o alicerce.
-                        </h2>
-                        <div class="bio-text">
-                            <p>Minha jornada na tecnologia não começou apenas escrevendo código, mas vivenciando os processos reais da indústria. Com experiência prévia como operador de CNC e analista de PCP, entendo na prática onde estão as dores operacionais e as ineficiências de uma linha de produção.</p>
-                            <p>Como desenvolvedor, atuo nas duas pontas: back-end em Python e Java, interfaces em React e TypeScript, e a camada de integração que conecta tudo isso ao resto da operação. Na prática, isso vai da automação pesada de arquivos CAD e DXF a sistemas comerciais completos, com autenticação, permissões e webhooks.</p>
-                            <p>Atualmente cursando Engenharia de Software. Aprofundo arquitetura de aplicações web full stack com Next.js e Postgres, sem largar o que já sustenta os sistemas em produção: Spring Boot, FastAPI e deploy próprio com Docker em VPS.</p>
+                <!-- FLAGSHIP PRODUCT SHOWCASE: ZENDA -->
+                <div class="zenda-flagship spotlight-card reveal-up">
+                    <div class="zenda-flagship-grid">
+                        <!-- Lado Esquerdo: Detalhes do Produto Zenda -->
+                        <div class="zenda-copy">
+                            <div class="product-pill-group">
+                                <span class="badge-flagship">
+                                    <span class="pulse-dot-emerald"></span>
+                                    PRODUTO EM DESTAQUE · ZENDA BY LYPSYOS
+                                </span>
+                                <span class="badge-mono">SAAS · WHATSAPP BOT 24/7 · CRM</span>
+                            </div>
+
+                            <h3 class="zenda-title">
+                                Zenda: CRM de Agendamentos &amp; Robô Atendente 24/7 no WhatsApp
+                            </h3>
+
+                            <blockquote class="zenda-quote">
+                                “Enquanto o profissional realiza um atendimento, o Zenda responde em 1.8 segundo, verifica horários livres sem conflito e agenda os próximos cinco clientes sozinho.”
+                            </blockquote>
+
+                            <p class="zenda-description">
+                                Desenvolvido como o carro-chefe da <strong>Lypsyos</strong>, o <strong>Zenda</strong> integra um motor de conversação automatizada no WhatsApp via QR Code criptografado a uma central CRM visual 3-em-1, motor de campanhas de reativação de clientes inativos e aplicativo PWA instalável com 1 toque.
+                            </p>
+
+                            <!-- Seletor de Fluxo em Tempo Real (Simulador Zenda) -->
+                            <div class="zenda-flow-interactive" aria-label="Pipeline de Automação do Zenda">
+                                <div class="flow-header">
+                                    <span class="flow-title">PIPELINE DE EXECUÇÃO EM TEMPO REAL</span>
+                                    <span class="flow-latency">Sync em 1.8s · Zero Overbooking</span>
+                                </div>
+                                <div class="flow-steps">
+                                    <div class="flow-step active" data-step="1">
+                                        <span class="step-num">01</span>
+                                        <div>
+                                            <strong>Mensagem no WhatsApp (24/7)</strong>
+                                            <p>URA inteligente interpreta intenção do cliente a qualquer hora sem intervenção manual.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-step" data-step="2">
+                                        <span class="step-num">02</span>
+                                        <div>
+                                            <strong>Consulta Atômica de Disponibilidade</strong>
+                                            <p>Trava transacional elimina 100% o risco de marcação dupla (double-booking).</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-step" data-step="3">
+                                        <span class="step-num">03</span>
+                                        <div>
+                                            <strong>Sincronização CRM + Push + Google Agenda</strong>
+                                            <p>Atualiza faturamento previsto do dia, envia alerta push no celular e cria alarme no Google Calendar.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="zenda-actions">
+                                <a href="https://lypsyos.com/zenda" target="_blank" rel="noopener" class="btn-amber">
+                                    <span>Conhecer o Zenda ao Vivo</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <a href="https://lypsyos.com/produtos" target="_blank" rel="noopener" class="btn-glass">
+                                    <span>Explorar Módulos Lypsyos</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lado Direito: Preview Real Interativo da Interface Zenda -->
+                        <div class="zenda-preview-stage">
+                            <div class="preview-browser-bar">
+                                <div class="browser-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="browser-url">
+                                    <span class="lock-icon">🔒</span>
+                                    <span id="zenda-url-display">app.lypsyos.com/crm</span>
+                                </div>
+                                <div class="preview-switcher" role="tablist" aria-label="Alternar tela do Zenda">
+                                    <button type="button" class="preview-switch-btn active" data-zenda-view="crm" role="tab" aria-selected="true">
+                                        Painel CRM
+                                    </button>
+                                    <button type="button" class="preview-switch-btn" data-zenda-view="marketing" role="tab" aria-selected="false">
+                                        Motor de Campanhas
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Imagem Real 1: Dashboard CRM Zenda -->
+                            <div class="zenda-screen-Viewport active" id="zenda-view-crm">
+                                <img
+                                    src="https://lypsyos.com/assets/interface-zenda-dashboard-WTbgl6Hn.png"
+                                    alt="Interface real do Painel Zenda CRM com indicadores de faturamento previsto, caixa e robô WhatsApp 24/7"
+                                    loading="lazy"
+                                    class="lightbox-trigger"
+                                    data-caption="Zenda by Lypsyos — Central de Comando CRM 3-em-1 com faturamento previsto em tempo real e status do Robô 24/7."
+                                >
+                                <div class="floating-hud-badge hud-top-right">
+                                    <span class="pulse-dot-emerald"></span>
+                                    <div>
+                                        <strong>Robô WhatsApp 24/7 Ativo</strong>
+                                        <span>Resposta média: 1.8s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Imagem Real 2: Marketing & Reativação Zenda -->
+                            <div class="zenda-screen-Viewport" id="zenda-view-marketing">
+                                <img
+                                    src="https://lypsyos.com/assets/interface-zenda-marketing-BoZLGyxE.png"
+                                    alt="Interface real do módulo de Marketing e Campanhas no WhatsApp do Zenda CRM para reativação de clientes"
+                                    loading="lazy"
+                                    class="lightbox-trigger"
+                                    data-caption="Zenda by Lypsyos — Motor de Campanhas &amp; Reativação de Clientes Inativos (>30 dias) com variáveis dinâmicas e preview mobile."
+                                >
+                                <div class="floating-hud-badge hud-top-right">
+                                    <span class="pulse-dot-amber"></span>
+                                    <div>
+                                        <strong>Segmentação Inteligente &gt;30d</strong>
+                                        <span>Disparo humanizado com URA</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="preview-caption-bar">
+                                <span>✨ Interface real em produção na plataforma Lypsyos (clique na tela para ampliar)</span>
+                                <span class="caption-tag">PWA + WebSocket</span>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="about-skills fade-in">
-                        <div class="skills-header">
-                            <span class="text-accent">BACK-END</span>
-                        </div>
-                        <div class="skills-tags">
-                            <span>Python</span>
-                            <span>FastAPI</span>
-                            <span>Java</span>
-                            <span>Spring Boot</span>
-                            <span>APIs REST</span>
-                            <span>Webhooks</span>
-                        </div>
-
-                        <div class="skills-header">
-                            <span class="text-accent">FRONT-END</span>
-                        </div>
-                        <div class="skills-tags">
-                            <span>React</span>
-                            <span>TypeScript</span>
-                            <span>Svelte</span>
-                            <span>Tailwind</span>
-                            <span>Vite</span>
-                        </div>
-
-                        <div class="skills-header">
-                            <span class="text-accent">DADOS & INFRA</span>
-                        </div>
-                        <div class="skills-tags">
-                            <span>PostgreSQL</span>
-                            <span>MongoDB</span>
-                            <span>Supabase</span>
-                            <span>Docker</span>
-                            <span>Linux</span>
-                            <span>Git/GitHub</span>
-                        </div>
-
-                        <div class="details-table">
-                            <div class="detail-row">
-                                <span class="text-accent">Foco</span>
-                                <span class="text-muted">Full stack · Automação e integração industrial</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="text-accent">Ecossistema</span>
-                                <span class="text-muted">Lypsyos · Soluções Corporativas</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="text-accent">Localização</span>
-                                <span class="text-muted">Votuporanga, SP · Remoto</span>
-                            </div>
-                            <div class="detail-row no-border">
-                                <span class="text-accent">Status</span>
-                                <span class="text-accent">● Disponível para oportunidades</span>
-                            </div>
-                        </div>
+                <!-- BENTO GRID / MOBILE SWIPE CAROUSEL: OS 6 MÓDULOS DO ECOSSISTEMA LYPSYOS -->
+                <div class="modules-section-header reveal-up">
+                    <div>
+                        <span class="mono-eyebrow">ARQUITETURA MODULAR LYPSYOS.COM</span>
+                        <h3 class="subsection-title">Ferramentas e Módulos do Ecossistema</h3>
                     </div>
+                    <span class="mobile-swipe-hint" aria-hidden="true">Deslize para explorar →</span>
+                </div>
+
+                <div class="lypsyos-bento-grid swipe-carousel" id="lypsyos-carousel">
+                    <!-- Módulo 1 -->
+                    <article class="bento-card spotlight-card reveal-up">
+                        <div class="bento-card-top">
+                            <span class="bento-icon">🤖</span>
+                            <span class="bento-category">AUTOMAÇÃO WHATSAPP</span>
+                        </div>
+                        <h4>Robô Atendente 24/7 com URA Inteligente</h4>
+                        <p>Conexão direta via QR Code criptografado. Responde clientes em menos de 2 segundos, filtra contatos pessoais automaticamente e higieniza números antes de gravar no CRM.</p>
+                        <ul class="bento-specs">
+                            <li>Zero conflito de agenda (trava atômica)</li>
+                            <li>Menu rápido por números e letras</li>
+                        </ul>
+                    </article>
+
+                    <!-- Módulo 2 -->
+                    <article class="bento-card spotlight-card reveal-up" style="--delay: 0.05s;">
+                        <div class="bento-card-top">
+                            <span class="bento-icon">📊</span>
+                            <span class="bento-category">GESTÃO &amp; FINANÇAS</span>
+                        </div>
+                        <h4>Central CRM Visual 3-em-1 &amp; Caixa</h4>
+                        <p>Visualização instantânea alternável entre Cartões, Lista Cronológica e Tabela Compacta, com cálculo em tempo real do faturamento confirmado e entradas pendentes.</p>
+                        <ul class="bento-specs">
+                            <li>Histórico completo de recorrência</li>
+                            <li>Acionamento wa.me em 1 clique</li>
+                        </ul>
+                    </article>
+
+                    <!-- Módulo 3 -->
+                    <article class="bento-card spotlight-card reveal-up" style="--delay: 0.1s;">
+                        <div class="bento-card-top">
+                            <span class="bento-icon">📣</span>
+                            <span class="bento-category">MOTOR DE REATIVAÇÃO</span>
+                        </div>
+                        <h4>Campanhas Inteligentes &amp; Recuperação</h4>
+                        <p>Isola automaticamente clientes sem agendar há mais de 30 dias e dispara campanhas personalizadas com a tag dinâmica <code>{nome_cliente}</code> e simulador de smartphone ao vivo.</p>
+                        <ul class="bento-specs">
+                            <li>Fila com cadência anti-bloqueio</li>
+                            <li>Conversão direta via URA no chat</li>
+                        </ul>
+                    </article>
+
+                    <!-- Módulo 4 -->
+                    <article class="bento-card spotlight-card reveal-up" style="--delay: 0.15s;">
+                        <div class="bento-card-top">
+                            <span class="bento-icon">📱</span>
+                            <span class="bento-category">EXPERIÊNCIA NATIVA</span>
+                        </div>
+                        <h4>Aplicativo Móvel Instalável (PWA)</h4>
+                        <p>Arquitetura Progressive Web App com Service Workers para instalação em 1 toque no iOS e Android (<code>display: standalone</code>), tela cheia e carregamento em milissegundos.</p>
+                        <ul class="bento-specs">
+                            <li>Atalhos nativos na Home Screen</li>
+                            <li>Cache inteligente para redes 4G/5G</li>
+                        </ul>
+                    </article>
+
+                    <!-- Módulo 5 -->
+                    <article class="bento-card spotlight-card reveal-up" style="--delay: 0.2s;">
+                        <div class="bento-card-top">
+                            <span class="bento-icon">🔔</span>
+                            <span class="bento-category">PROATIVIDADE</span>
+                        </div>
+                        <h4>Web Push &amp; Sync Bidirecional Google Calendar</h4>
+                        <p>Resumo matinal programável na tela de bloqueio do celular com a agenda e receita prevista do dia, além de sincronização em tempo real com o Google Agenda.</p>
+                        <ul class="bento-specs">
+                            <li>Notificações push instantâneas</li>
+                            <li>Painel de teste e ajuste de alertas</li>
+                        </ul>
+                    </article>
+
+                    <!-- Módulo 6 -->
+                    <article class="bento-card spotlight-card reveal-up" style="--delay: 0.25s;">
+                        <div class="bento-card-top">
+                            <span class="bento-icon">🛡️</span>
+                            <span class="bento-category">SEGURANÇA BANCÁRIA</span>
+                        </div>
+                        <h4>Lypsyos Security Guard &amp; Multitenant RLS</h4>
+                        <p>Isolamento estrito de dados por organização utilizando Row-Level Security (RLS) no PostgreSQL/Supabase, criptografia JWT ponta a ponta, honeypots e travas anti-bot.</p>
+                        <ul class="bento-specs">
+                            <li>Isolamento 100% no banco de dados</li>
+                            <li>Catálogo multi-nicho &amp; PIX integrado</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Projetos -->
-        <section id="projetos" class="content-section">
+        <!-- ==================================================================
+             03. OPEN SOURCE SHOWCASE: MONITOR-CYD-RESOURCES (v3.0)
+             ================================================================== -->
+        <section id="opensource" class="section-block oss-section">
             <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-index">
+                        <span class="index-num">02</span>
+                        <span class="index-divider"></span>
+                        <span class="index-label">OPEN SOURCE EM DESTAQUE · HARDWARE TELEMETRY &amp; FINTECH TERMINAL</span>
+                    </div>
 
-                <div class="section-label fade-in">
-                    <span class="label-number">02</span>
-                    <div class="label-line"></div>
-                    <span class="label-text">PROJETOS &amp; CASOS DE USO</span>
+                    <div class="section-title-row">
+                        <div>
+                            <div class="oss-badges-row">
+                                <span class="oss-badge oss-badge-green">v3.0.0 STABLE</span>
+                                <span class="oss-badge oss-badge-blue">ESP32-2432S028R (CYD 320×240)</span>
+                                <span class="oss-badge oss-badge-cyan">FLET / FLUTTER DESKTOP AGENT</span>
+                                <span class="oss-badge oss-badge-amber">MIT LICENSE</span>
+                            </div>
+                            <h2 class="section-title">
+                                <code>monitor-cyd-resources</code>
+                            </h2>
+                            <p class="section-subtitle">
+                                Monitor de hardware e terminal de mercado financeiro em tempo real (Bolsa B3, S&amp;P500, Câmbio e Criptomoedas) para a placa <strong>ESP32 Cheap Yellow Display (CYD 2.8")</strong>, controlado 100% pelo PC via USB Serial através de uma interface desktop moderna em <strong>Flet (Flutter para Python)</strong>.
+                            </p>
+                        </div>
+                        <a href="https://github.com/matribeirotech/monitor-cyd-resources" target="_blank" rel="noopener" class="btn-amber">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                            </svg>
+                            <span>Repositório no GitHub</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="projects-list">
-
-                    <!-- Projeto 1: DBX -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">01</div>
-                            <div class="project-info">
-                                <h3>DBX-V4 (Ecossistema Lypsyos)</h3>
-                                <p>Software desktop standalone de orçamento e engenharia para empresas de corte e conformação. Automatiza a entrada de peças via Excel, DXF ou JSON, realiza o cálculo de aproveitamento de chapa e gera saídas em Excel, PDF e DXF prontas para a máquina.</p>
-                                <div class="project-tags">
-                                    <span>Python</span>
-                                    <span>PyQt5</span>
-                                    <span>Supabase</span>
-                                    <span>GitHub Actions</span>
-                                </div>
-                                <a class="project-link" href="https://github.com/matribeirotech/dbx-v3-desktop" target="_blank" rel="noopener">VER REPOSITÓRIO →</a>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">IMPACTO</div>
-                                <div class="impact-value">~60% mais orçamentos processados</div>
-                                <div class="impact-year">2025/2026</div>
-                            </div>
+                <!-- ARQUITETURA NO-TOUCH & SELETOR INTERATIVO DE TEMAS RGB565 -->
+                <div class="cyd-architecture-showcase reveal-up">
+                    <!-- Explicação Técnica da Arquitetura No-Touch -->
+                    <div class="cyd-arch-card spotlight-card">
+                        <div class="arch-card-header">
+                            <span class="mono-eyebrow">DECISÃO DE ENGENHARIA · ARQUITETURA NO-TOUCH</span>
+                            <h3>Por que removemos o driver <code>XPT2046</code> e transferimos 100% do controle para o PC?</h3>
                         </div>
-                    </div>
-
-                    <!-- Projeto 2: Perfilar -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">02</div>
-                            <div class="project-info">
-                                <h3>Perfilar (Sistema Comercial)</h3>
-                                <p>Sistema corporativo modular para distribuidoras de perfis de aço dobrado. Desenvolvido com editor de perfis integrado, controle completo de precificação, autenticação com RBAC (Role-Based Access Control) e integrações via webhooks.</p>
-                                <div class="project-tags">
-                                    <span>FastAPI</span>
-                                    <span>Svelte 5</span>
-                                    <span>PostgreSQL</span>
-                                    <span>Docker</span>
-                                </div>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">IMPACTO</div>
-                                <div class="impact-value">~27% de otimização no fluxo comercial</div>
-                                <div class="impact-year">2026</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 3: EletroFlow -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">03</div>
-                            <div class="project-info">
-                                <h3>EletroFlow</h3>
-                                <p>Plataforma web para gestão de contas de energia e acompanhamento fotovoltaico. O sistema utiliza Inteligência Artificial para extrair automaticamente os dados complexos de faturas em PDF e estrutura dashboards analíticos de consumo e saldo.</p>
-                                <div class="project-tags">
-                                    <span>React</span>
-                                    <span>TypeScript</span>
-                                    <span>Firebase</span>
-                                    <span>IA (OCR)</span>
-                                </div>
-                                <a class="project-link" href="https://github.com/matribeirotech/electro-flow" target="_blank" rel="noopener">VER REPOSITÓRIO →</a>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">DESTAQUE</div>
-                                <div class="impact-value">Leitura 100% automatizada de faturas</div>
-                                <div class="impact-year">2026</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 4: GeoQuote -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">04</div>
-                            <div class="project-info">
-                                <h3>GeoQuote</h3>
-                                <p>Plataforma web estruturada para orçamentos online de peças cortadas a laser, plasma e oxicorte. A aplicação conta com um front-end veloz que consome uma API REST própria para processar as geometrias e devolver precificações instantâneas.</p>
-                                <div class="project-tags">
-                                    <span>React</span>
-                                    <span>Vite</span>
-                                    <span>Python</span>
-                                    <span>FastAPI</span>
-                                </div>
-                                <a class="project-link" href="https://github.com/matribeirotech/geoquote" target="_blank" rel="noopener">VER REPOSITÓRIO →</a>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">IMPACTO</div>
-                                <div class="impact-value">Geração instantânea de cotações</div>
-                                <div class="impact-year">2026</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 5: Dashboard Financeiro (OCR + IA) -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">05</div>
-                            <div class="project-info">
-                                <h3>Controle Financeiro com OCR</h3>
-                                <p>Sistema interno para organização e controle financeiro de caixa, faturamento e despesas. Elimina a digitação manual de valores utilizando tecnologia OCR aliada à Inteligência Artificial (Groq API) para ler e categorizar comprovantes de pagamento.</p>
-                                <div class="project-tags">
-                                    <span>Python</span>
-                                    <span>Streamlit</span>
-                                    <span>Pandas</span>
-                                    <span>Groq API</span>
-                                </div>
-                                <a class="project-link" href="https://github.com/matribeirotech/controle-de-financias" target="_blank" rel="noopener">VER REPOSITÓRIO →</a>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">IMPACTO</div>
-                                <div class="impact-value">Fim da digitação manual de notas</div>
-                                <div class="impact-year">2025/2026</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 6: Dashboard de Engenharia -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">06</div>
-                            <div class="project-info">
-                                <h3>Controle de Desenhos e Orçamentos</h3>
-                                <p>Painel operacional dedicado ao setor de engenharia de corte a laser e plasma. A plataforma centraliza solicitações, conecta dados em tempo real com o Google Sheets e fornece relatórios analíticos completos para acompanhamento de pendências, status de aprovação, vendedores e clientes.</p>
-                                <div class="project-tags">
-                                    <span>Google Apps Script</span>
-                                    <span>Sheets API</span>
-                                    <span>HTML/JS</span>
-                                    <span>Data Analytics</span>
-                                </div>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">IMPACTO</div>
-                                <div class="impact-value">Visibilidade total do fluxo da engenharia</div>
-                                <div class="impact-year">2026</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Projeto 7: Dashboard de Marketing -->
-                    <div class="project-card fade-in">
-                        <div class="project-grid">
-                            <div class="project-number">07</div>
-                            <div class="project-info">
-                                <h3>Gestão de Demandas de Marketing</h3>
-                                <p>Plataforma corporativa para gerenciamento do fluxo de solicitações do setor de marketing. O sistema organiza filas de trabalho por prioridade (materiais digitais, brindes, patrocínios), gerencia o histórico de arquivamento e gera gráficos gerenciais de volume por filial e departamento.</p>
-                                <div class="project-tags">
-                                    <span>Google Apps Script</span>
-                                    <span>Sheets API</span>
-                                    <span>HTML/JS</span>
-                                    <span>BI / Gráficos</span>
-                                </div>
-                            </div>
-                            <div class="project-impact">
-                                <div class="impact-label">IMPACTO</div>
-                                <div class="impact-value">Organização e priorização de fila</div>
-                                <div class="impact-year">2026</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Contato -->
-        <section id="contato" class="content-section">
-            <div class="container">
-                <div class="section-label fade-in">
-                    <span class="label-number">03</span>
-                    <div class="label-line"></div>
-                    <span class="label-text">CONTATO</span>
-                </div>
-
-                <div class="contact-grid">
-                    <div class="fade-in">
-                        <h2 class="section-heading">
-                            Vamos<br>
-                            resolver<br>
-                            <span class="text-accent">problemas.</span>
-                        </h2>
-                        <p class="bio-text" style="max-width: 450px;">
-                            Estou aberto a oportunidades como desenvolvedor e a projetos de automação e integração industrial. Se você tem um gargalo operacional que precisa de tecnologia para ser resolvido, me conta.
+                        <p class="arch-card-lead">
+                            Placas <strong>ESP32-2432S028R</strong> frequentemente sofrem com leituras fantasmas (*ghost touches*) no controlador resistivo <code>XPT2046</code> e desperdício de barramentos SPI. Na <strong>v3.0</strong>, a dependência de touch foi 100% erradicada do firmware embarcado, liberando RAM/CPU para gráficos a 28 FPS e transferindo o comando para um agente assíncrono em <strong>Flet (Flutter)</strong> no PC:
                         </p>
+
+                        <div class="arch-pillars-grid">
+                            <div class="arch-pillar">
+                                <span class="pillar-metric">&lt; 50ms</span>
+                                <strong>Event-Driven Screen Switch</strong>
+                                <p>Troca instantânea entre as 7 telas da placa com 1 clique na GUI do PC via fila serial não-bloqueante.</p>
+                            </div>
+                            <div class="arch-pillar">
+                                <span class="pillar-metric">RGB565</span>
+                                <strong>Live Color Engine</strong>
+                                <p>Seletor HEX/RGB565 no PC que repinta medidores, curvas e textos do display embarcado em tempo real.</p>
+                            </div>
+                            <div class="arch-pillar">
+                                <span class="pillar-metric">28 FPS</span>
+                                <strong>Ticker Tape Financeiro</strong>
+                                <p>Letreiro infinito da Bolsa e Cripto (USD, EUR, IBOV, S&amp;P500, BTC, SOL, BNB) rodando suave no rodapé.</p>
+                            </div>
+                            <div class="arch-pillar">
+                                <span class="pillar-metric">USB → SD</span>
+                                <strong>Wallpaper Pipeline &amp; PWM</strong>
+                                <p>Conversão e upload de artes JPG/PNG/BMP/GIF direto para o MicroSD via cabo USB + brilho PWM (Pino 21).</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="contact-links fade-in">
-                        <a href="https://www.linkedin.com/in/matheus-r-dev/" target="_blank" rel="noopener" class="contact-card">
+                    <!-- Simulador Interativo de Cores em Tempo Real (Com as Fotos Reais do GitHub!) -->
+                    <div class="cyd-theme-tester spotlight-card">
+                        <div class="tester-header">
                             <div>
-                                <div class="contact-label">LINKEDIN</div>
-                                <div class="contact-value">Conecte-se comigo</div>
+                                <span class="mono-eyebrow">INTERACTIVE HARDWARE PREVIEW</span>
+                                <h4>Teste o Motor de Cores RGB565 na Placa Real</h4>
                             </div>
-                            <span class="contact-arrow">→</span>
-                        </a>
-                        <a href="https://github.com/matribeirotech" target="_blank" rel="noopener" class="contact-card">
-                            <div>
-                                <div class="contact-label">GITHUB</div>
-                                <div class="contact-value">matribeirotech</div>
+                            <div class="rgb-swatches" role="tablist" aria-label="Escolher tema RGB565 da placa CYD">
+                                <button type="button" class="rgb-swatch active" data-cyd-theme="matrix" role="tab" aria-selected="true" style="--swatch-color: #00ff66;">
+                                    <span class="swatch-dot"></span>
+                                    <span>Matrix Green</span>
+                                </button>
+                                <button type="button" class="rgb-swatch" data-cyd-theme="neon" role="tab" aria-selected="false" style="--swatch-color: #00d4ff;">
+                                    <span class="swatch-dot"></span>
+                                    <span>Neon Blue</span>
+                                </button>
+                                <button type="button" class="rgb-swatch" data-cyd-theme="crimson" role="tab" aria-selected="false" style="--swatch-color: #ff2a55;">
+                                    <span class="swatch-dot"></span>
+                                    <span>Crimson Red</span>
+                                </button>
                             </div>
-                            <span class="contact-arrow">→</span>
-                        </a>
-                        <a href="mailto:matheusrds@lypsyos.com" class="contact-card">
-                            <div>
-                                <div class="contact-label">E-MAIL</div>
-                                <div class="contact-value">matheusrds@lypsyos.com</div>
+                        </div>
+
+                        <div class="tester-viewport">
+                            <img
+                                id="cyd-live-theme-img"
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-1.jpg"
+                                alt="Placa ESP32 CYD em funcionamento real com Tema Verde Matrix e Ticker Tape"
+                                class="lightbox-trigger"
+                                data-caption="Tela Resumo Gauges — Tema Verde Matrix (#00FF66) com Ticker Tape financeiro em funcionamento real na placa ESP32-2432S028R."
+                            >
+                            <div class="tester-overlay-bar">
+                                <span id="cyd-live-theme-code" class="mono-code">HEX #00FF66 → RGB565 0x07EC · SCR_RESUMO</span>
+                                <span class="click-zoom-hint">🔍 Clique para ampliar</span>
                             </div>
-                            <span class="contact-arrow">→</span>
-                        </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GALERIA COMPLETA COM TODAS AS 7 IMAGENS REAIS DO README DO GITHUB -->
+                <div class="cyd-gallery-header reveal-up">
+                    <div>
+                        <span class="mono-eyebrow">GALERIA OFICIAL EXTRAÍDA DO README.MD (GITHUB RAW)</span>
+                        <h3 class="subsection-title">Funcionamento Real: Agente Desktop Flet &amp; As 7 Telas Embarcadas</h3>
+                    </div>
+
+                    <!-- Filtros da Galeria -->
+                    <div class="gallery-filters" role="tablist" aria-label="Filtrar imagens do projeto monitor-cyd-resources">
+                        <button type="button" class="filter-chip active" data-filter="all">Todas (7)</button>
+                        <button type="button" class="filter-chip" data-filter="pc">Agente PC Flet (1)</button>
+                        <button type="button" class="filter-chip" data-filter="market">Terminal Bolsa &amp; Cripto (2)</button>
+                        <button type="button" class="filter-chip" data-filter="telemetry">Hardware &amp; RGB565 (4)</button>
+                    </div>
+                </div>
+
+                <div class="cyd-gallery-grid swipe-carousel" id="cyd-gallery">
+                    <!-- 1. Painel de Controle PC (Destaque Wide) -->
+                    <figure class="gallery-item gallery-item-featured spotlight-card reveal-up" data-category="pc">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-pc-1.jpg"
+                                alt="Painel de Controle Total no PC em Flet / Flutter"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Painel de Controle Total no PC (Flet / Flutter) — Troca de telas em <50ms, seletor de cores RGB565, controle PWM de brilho e upload de Wallpapers via USB Serial."
+                            >
+                            <span class="gallery-badge badge-cyan">DESKTOP AGENT · FLET / FLUTTER</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">01 // PC CONTROL CENTER</span>
+                                <span class="caption-res">USB Serial 115200 bps</span>
+                            </div>
+                            <h4>Painel de Controle Total no PC (Flet / Flutter)</h4>
+                            <p>Interface desktop reativa que gerencia telemetria de CPU/GPU/RAM, cotações da B3/Cripto, customização de cores RGB565, brilho PWM e envio de papéis de parede para o MicroSD.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 2. Terminal Bolsa & Cripto 1 (preview-tela-4.jpg) -->
+                    <figure class="gallery-item spotlight-card reveal-up" data-category="market">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-4.jpg"
+                                alt="Tela Bolsa e Cripto - Dólar, Euro, IBOVESPA, S&amp;P500 e Bitcoin 24h"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Terminal Bolsa de Valores &amp; Criptomoedas (LIVE MARKET) — Dólar Comercial (USD/BRL), Euro (EUR/BRL), IBOVESPA (B3), S&amp;P500 e Bitcoin 24h."
+                            >
+                            <span class="gallery-badge badge-emerald">SCR_MARKET · LIVE TERMINAL</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">02 // BLOOMBERG / B3 MODE</span>
+                                <span class="caption-res">USD · EUR · IBOV · BTC</span>
+                            </div>
+                            <h4>Terminal Bolsa de Valores &amp; Criptomoedas (<code>LIVE MARKET</code>)</h4>
+                            <p>Cards superiores com Dólar, Euro e IBOVESPA acompanhados de variação percentual diária e painel cripto/índices em tempo real na tela de 2.8".</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 3. Terminal Bolsa & Cripto 2 (preview-tela-5.jpg) -->
+                    <figure class="gallery-item spotlight-card reveal-up" data-category="market">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-5.jpg"
+                                alt="Tela Bolsa e Cripto com Ticker Tape mostrando S&amp;P500 e CPU"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Terminal Financeiro Embarcado com Ticker Tape a 28 FPS exibindo S&amp;P500, Criptoativos e telemetria de CPU simultânea."
+                            >
+                            <span class="gallery-badge badge-emerald">28 FPS TICKER TAPE</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">03 // MARKET + TELEMETRY HUD</span>
+                                <span class="caption-res">S&amp;P500 + CPU Load</span>
+                            </div>
+                            <h4>Cotações Globais + Letreiro Infinito a 28 FPS</h4>
+                            <p>Sincronização contínua de ativos financeiros (<code>USD</code>, <code>EUR</code>, <code>BTC</code>, <code>ETH</code>, <code>SOL</code>, <code>BNB</code>, <code>XRP</code>, <code>IBOV</code>, <code>S&amp;P500</code>) sem engasgar o loop de renderização SPI.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 4. Tema Verde Matrix (preview-tela-1.jpg) -->
+                    <figure class="gallery-item spotlight-card reveal-up" data-category="telemetry">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-1.jpg"
+                                alt="Tela Resumo - Tema Verde Matrix com Ticker Tape"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Tela 0 (SCR_RESUMO) — Tema Verde Matrix com Smooth Arc Gauges para CPU % e RAM %, temperatura, clock, GPU, rede e Ticker Tape no rodapé."
+                            >
+                            <span class="gallery-badge badge-amber">RGB565 · MATRIX GREEN</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">04 // SCR_RESUMO (MATRIX)</span>
+                                <span class="caption-res">Smooth Arc Gauges</span>
+                            </div>
+                            <h4>Resumo Gauges — Tema Verde Matrix + Ticker Tape</h4>
+                            <p>Medidores circulares suaves para CPU % e RAM %, temperatura, clock, uso de GPU, VRAM/Swap, Disco e tráfego de rede (DL/UL).</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 5. Tema Azul Neon (preview-tela-2.jpg) -->
+                    <figure class="gallery-item spotlight-card reveal-up" data-category="telemetry">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-2.jpg"
+                                alt="Tela Resumo - Tema Azul Neon com Cotação Dólar e Euro no Rodapé"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Tela 0 (SCR_RESUMO) — Repintura instantânea em Azul Neon via seletor de cores do PC com cotações de Dólar e Euro no rodapé."
+                            >
+                            <span class="gallery-badge badge-cyan">RGB565 · NEON BLUE</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">05 // SCR_RESUMO (NEON BLUE)</span>
+                                <span class="caption-res">Live Color Repaint</span>
+                            </div>
+                            <h4>Customização Azul Neon + Câmbio USD/EUR no Rodapé</h4>
+                            <p>Demonstração da repintura dinâmica da interface embarcada em tempo real via protocolo serial, mantendo o letreiro da bolsa ativo.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 6. Tema Vermelho Crimson (preview-tela-3.jpg) -->
+                    <figure class="gallery-item spotlight-card reveal-up" data-category="telemetry">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-3.jpg"
+                                alt="Tela Resumo - Tema Vermelho Crimson com Solana e BNB no Rodapé"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Tela 0 (SCR_RESUMO) — Tema Vermelho Crimson aplicado em tempo real com monitoramento de Solana (SOL) e BNB no Ticker Tape."
+                            >
+                            <span class="gallery-badge badge-crimson">RGB565 · CRIMSON RED</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">06 // SCR_RESUMO (CRIMSON)</span>
+                                <span class="caption-res">SOL &amp; BNB Live Stream</span>
+                            </div>
+                            <h4>Tema Vermelho Crimson + Criptoativos (Solana &amp; BNB)</h4>
+                            <p>Adaptação imediata de paleta para setups gamer/workstation com monitoramento simultâneo de sensores térmicos e criptomoedas.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 7. Tela 4x Gráficos em Tempo Real (preview-tela-6.jpg) -->
+                    <figure class="gallery-item spotlight-card reveal-up" data-category="telemetry">
+                        <div class="gallery-img-wrap">
+                            <img
+                                src="https://raw.githubusercontent.com/matribeirotech/monitor-cyd-resources/main/preview/preview-tela-6.jpg"
+                                alt="Tela 4x Gráficos em Tempo Real (CPU, RAM, GPU, Temp) + Ticker Tape"
+                                loading="lazy"
+                                class="lightbox-trigger"
+                                data-caption="Tela 4 (SCR_GRAPH) — Grid 2×2 com 4 gráficos osciloscópios simultâneos em tempo real (CPU %, RAM %, GPU % e TEMP °C) + Ticker Tape."
+                            >
+                            <span class="gallery-badge badge-amber">SCR_GRAPH · 2×2 OSCILLOSCOPE</span>
+                        </div>
+                        <figcaption class="gallery-caption">
+                            <div class="caption-meta">
+                                <span class="caption-id">07 // SCR_GRAPH (QUAD PLOT)</span>
+                                <span class="caption-res">CPU · RAM · GPU · TEMP</span>
+                            </div>
+                            <h4>Grid 2×2: 4 Gráficos Históricos em Tempo Real</h4>
+                            <p>Plotagem contínua de séries temporais para carga de CPU, uso de RAM, utilização de GPU e temperatura em graus Celsius.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- Paginação Mobile do Carrossel CYD -->
+                <div class="mobile-carousel-dots" id="cyd-carousel-dots" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             04. SOBRE MIM, ARQUITETURA DE SISTEMAS & STACK MODERNA
+             ================================================================== -->
+        <section id="sobre" class="section-block">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-index">
+                        <span class="index-num">03</span>
+                        <span class="index-divider"></span>
+                        <span class="index-label">POSICIONAMENTO TÉCNICO · ENGENHARIA DE SOFTWARE &amp; UI/UX</span>
+                    </div>
+                    <h2 class="section-title">
+                        Arquitetura limpa, <span class="text-gradient-amber">interfaces memoráveis</span> e sistemas que escalam.
+                    </h2>
+                </div>
+
+                <div class="about-architecture-grid">
+                    <!-- Coluna Bio & Filosofia de Produto -->
+                    <div class="about-narrative spotlight-card reveal-up">
+                        <span class="mono-eyebrow">SOBRE MATHEUS RIBEIRO</span>
+                        <h3>Da concepção do produto ao deploy em nuvem e código aberto</h3>
+
+                        <div class="narrative-paragraphs">
+                            <p>
+                                Sou desenvolvedor Full Stack e estudante de <strong>Engenharia de Software</strong>, focado na construção de produtos digitais de alto valor percebido, plataformas SaaS multitenant e ferramentas open source de alta performance.
+                            </p>
+                            <p>
+                                No ecossistema <strong>Lypsyos</strong>, lidero o desenvolvimento de soluções como o <strong>Zenda</strong> — combinando automação conversacional em tempo real (WhatsApp 24/7 com resposta em menos de 2 segundos), arquitetura de dados segura com <strong>PostgreSQL Row-Level Security (RLS)</strong> e interfaces <strong>Mobile-First / PWA</strong> projetadas para usabilidade imediata.
+                            </p>
+                            <p>
+                                No universo <strong>Open Source</strong>, projeto soluções criativas de engenharia como o <code>monitor-cyd-resources</code>, unindo aplicações desktop reativas em <strong>Python (Flet / Flutter)</strong> a protocolos seriais de baixa latência e renderização gráfica embarcada em <strong>C++ / ESP32</strong>.
+                            </p>
+                        </div>
+
+                        <div class="profile-metadata-grid">
+                            <div class="meta-box">
+                                <span class="meta-k">ATUAÇÃO PRINCIPAL</span>
+                                <span class="meta-v">Produtos Digitais SaaS, Automação Real-Time &amp; Open Source</span>
+                            </div>
+                            <div class="meta-box">
+                                <span class="meta-k">ECOSSISTEMA</span>
+                                <span class="meta-v"><a href="https://lypsyos.com" target="_blank" rel="noopener">Lypsyos Tecnologia</a> (Criador do Zenda CRM)</span>
+                            </div>
+                            <div class="meta-box">
+                                <span class="meta-k">FORMAÇÃO</span>
+                                <span class="meta-v">Engenharia de Software</span>
+                            </div>
+                            <div class="meta-box">
+                                <span class="meta-k">LOCALIZAÇÃO &amp; MODALIDADE</span>
+                                <span class="meta-v">São Paulo, Brasil · 100% Remoto / Global</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna Stack Tecnológica & Domínios -->
+                    <div class="stack-domains-column">
+                        <div class="stack-domain-card spotlight-card reveal-up">
+                            <div class="domain-header">
+                                <span class="domain-code">01 // FRONT-END, MOBILE &amp; UI/UX</span>
+                                <span class="domain-badge">INTERFACES PREMIUM</span>
+                            </div>
+                            <p class="domain-desc">Design Systems autorais, micro-interações fluidas, PWAs instaláveis e aplicações desktop multiplataforma.</p>
+                            <div class="tech-chip-cloud">
+                                <span class="tech-chip chip-highlight">React</span>
+                                <span class="tech-chip chip-highlight">TypeScript</span>
+                                <span class="tech-chip chip-highlight">Next.js</span>
+                                <span class="tech-chip">Svelte 5</span>
+                                <span class="tech-chip">Tailwind CSS</span>
+                                <span class="tech-chip chip-highlight">Flet / Flutter</span>
+                                <span class="tech-chip">PWA / Service Workers</span>
+                                <span class="tech-chip">HTML5 / CSS3 Avançado</span>
+                            </div>
+                        </div>
+
+                        <div class="stack-domain-card spotlight-card reveal-up" style="--delay: 0.08s;">
+                            <div class="domain-header">
+                                <span class="domain-code">02 // BACK-END, AUTOMAÇÃO &amp; SISTEMAS</span>
+                                <span class="domain-badge">ALTA DISPONIBILIDADE</span>
+                            </div>
+                            <p class="domain-desc">APIs REST/WebSocket de baixa latência, motores de agendamento autônomo, integrações com IA/OCR e comunicação serial embarcada.</p>
+                            <div class="tech-chip-cloud">
+                                <span class="tech-chip chip-highlight">Python</span>
+                                <span class="tech-chip chip-highlight">FastAPI</span>
+                                <span class="tech-chip">Java</span>
+                                <span class="tech-chip">Spring Boot</span>
+                                <span class="tech-chip">Node.js</span>
+                                <span class="tech-chip chip-highlight">WebSockets &amp; Webhooks</span>
+                                <span class="tech-chip">C++ / ESP32 Serial</span>
+                                <span class="tech-chip">LLM &amp; OCR Pipelines</span>
+                            </div>
+                        </div>
+
+                        <div class="stack-domain-card spotlight-card reveal-up" style="--delay: 0.16s;">
+                            <div class="domain-header">
+                                <span class="domain-code">03 // DATA, CLOUD &amp; DEVSECOPS</span>
+                                <span class="domain-badge">MULTITENANT RLS</span>
+                            </div>
+                            <p class="domain-desc">Modelagem relacional escalável, isolamento multitenant de nível bancário e infraestrutura containerizada em nuvem.</p>
+                            <div class="tech-chip-cloud">
+                                <span class="tech-chip chip-highlight">PostgreSQL</span>
+                                <span class="tech-chip chip-highlight">Supabase (RLS)</span>
+                                <span class="tech-chip">Docker &amp; Compose</span>
+                                <span class="tech-chip">Linux VPS</span>
+                                <span class="tech-chip">GitHub Actions (CI/CD)</span>
+                                <span class="tech-chip">Google Calendar API</span>
+                                <span class="tech-chip">Web Push Protocol</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             05. CONTATO & CONEXÃO DIRETA
+             ================================================================== -->
+        <section id="contato" class="section-block contact-section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-index">
+                        <span class="index-num">04</span>
+                        <span class="index-divider"></span>
+                        <span class="index-label">CONTATO · PROJETOS, PARCERIAS &amp; OPORTUNIDADES</span>
+                    </div>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Lado Esquerdo: Chamada & Canais Diretos -->
+                    <div class="contact-direct reveal-up">
+                        <h2 class="contact-headline">
+                            Vamos construir o próximo <span class="text-gradient-amber">grande produto digital?</span>
+                        </h2>
+                        <p class="contact-lead">
+                            Disponível para atuar em times de engenharia de produto (Full Stack / Front-End / Back-End), parcerias estratégicas com o ecossistema <strong>Lypsyos</strong> ou colaborações em projetos <strong>Open Source</strong>.
+                        </p>
+
+                        <div class="direct-channels-list">
+                            <a href="https://www.linkedin.com/in/matheus-r-dev/" target="_blank" rel="noopener" class="channel-card spotlight-card">
+                                <div class="channel-icon-box">in</div>
+                                <div class="channel-info">
+                                    <span class="channel-label">LINKEDIN OFICIAL</span>
+                                    <strong class="channel-value">linkedin.com/in/matheus-r-dev</strong>
+                                </div>
+                                <span class="channel-arrow">↗</span>
+                            </a>
+
+                            <a href="https://github.com/matribeirotech" target="_blank" rel="noopener" class="channel-card spotlight-card">
+                                <div class="channel-icon-box">GH</div>
+                                <div class="channel-info">
+                                    <span class="channel-label">GITHUB &amp; OPEN SOURCE</span>
+                                    <strong class="channel-value">github.com/matribeirotech</strong>
+                                </div>
+                                <span class="channel-arrow">↗</span>
+                            </a>
+
+                            <a href="https://lypsyos.com" target="_blank" rel="noopener" class="channel-card spotlight-card">
+                                <div class="channel-icon-box">⚡</div>
+                                <div class="channel-info">
+                                    <span class="channel-label">ECOSSISTEMA DE PRODUTOS</span>
+                                    <strong class="channel-value">lypsyos.com · Zenda CRM</strong>
+                                </div>
+                                <span class="channel-arrow">↗</span>
+                            </a>
+
+                            <div class="channel-card spotlight-card email-channel-card">
+                                <div class="channel-icon-box">@</div>
+                                <div class="channel-info">
+                                    <span class="channel-label">E-MAIL DIRETO</span>
+                                    <strong class="channel-value" id="email-text">matheusrds@lypsyos.com</strong>
+                                </div>
+                                <div class="email-actions">
+                                    <button type="button" id="copy-email-btn" class="btn-copy-chip" aria-label="Copiar endereço de e-mail">
+                                        Copiar
+                                    </button>
+                                    <a href="mailto:matheusrds@lypsyos.com" class="btn-copy-chip" aria-label="Enviar e-mail">
+                                        Abrir
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Composer Interativo de Mensagem Rápida -->
+                    <div class="contact-composer spotlight-card reveal-up" style="--delay: 0.1s;">
+                        <div class="composer-header">
+                            <span class="mono-eyebrow">DIRECT DISPATCH // SEM FORMULÁRIOS LENTOS</span>
+                            <h3>Envie um Briefing Instantâneo</h3>
+                            <p>Escolha o assunto, escreva sua mensagem e dispare diretamente para meu e-mail executivo.</p>
+                        </div>
+
+                        <form id="quick-contact-form" class="composer-form">
+                            <div class="form-field">
+                                <label>ASSUNTO PRINCIPAL</label>
+                                <div class="topic-pills" role="radiogroup" aria-label="Assunto do contato">
+                                    <button type="button" class="topic-pill active" data-topic="Oportunidade / Engenharia de Software">
+                                        💼 Oportunidade Tech
+                                    </button>
+                                    <button type="button" class="topic-pill" data-topic="Ecossistema Lypsyos / Zenda">
+                                        ⚡ Lypsyos &amp; Zenda
+                                    </button>
+                                    <button type="button" class="topic-pill" data-topic="Open Source / monitor-cyd-resources">
+                                        📟 Open Source
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="sender-name">SEU NOME OU EMPRESA</label>
+                                <input type="text" id="sender-name" name="name" placeholder="Ex: Ana Silva · Tech Recruiter / CTO" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="sender-message">MENSAGEM</label>
+                                <textarea id="sender-message" name="message" rows="4" placeholder="Conte-me rapidamente sobre o produto, vaga ou ideia que você quer construir..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-amber btn-full">
+                                <span>Preparar e Enviar Mensagem</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <span class="footer-copy">© 2026 MATHEUS RIBEIRO</span>
-            <div class="nav-status">
-                <div class="status-dot"></div>
-                <span style="font-size: 10px;">DISPONÍVEL PARA OPORTUNIDADES</span>
+    <!-- ==================================================================
+         FOOTER
+         ================================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-copy">© 2026 MATHEUS RIBEIRO · SOFTWARE ENGINEER</span>
+                <span class="footer-sep">·</span>
+                <a href="https://lypsyos.com" target="_blank" rel="noopener">Ecossistema Lypsyos</a>
+                <span class="footer-sep">·</span>
+                <a href="https://github.com/matribeirotech/monitor-cyd-resources" target="_blank" rel="noopener">monitor-cyd-resources</a>
+            </div>
+            <div class="footer-status">
+                <span class="pulse-dot"></span>
+                <span>CRAFTED FOR HIGH PERFORMANCE</span>
             </div>
         </div>
     </footer>
+
+    <!-- ==================================================================
+         MOBILE EXCLUSIVE UX: NATIVE APP BOTTOM NAVIGATION DOCK
+         ================================================================== -->
+    <nav class="mobile-bottom-dock" aria-label="Navegação Mobile App">
+        <a href="#hero" class="dock-item active" data-section="hero">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Início</span>
+        </a>
+        <a href="#lypsyos" class="dock-item" data-section="lypsyos">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Lypsyos</span>
+        </a>
+        <a href="#opensource" class="dock-item" data-section="opensource">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 21h8M12 17v4M7 10l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Open Source</span>
+        </a>
+        <a href="#sobre" class="dock-item" data-section="sobre">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Stack</span>
+        </a>
+        <a href="#contato" class="dock-item" data-section="contato">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Contato</span>
+        </a>
+    </nav>
+
+    <!-- ==================================================================
+         MOBILE EXCLUSIVE UX: INTERACTIVE QUICK-CONNECT BOTTOM SHEET
+         ================================================================== -->
+    <div id="quick-sheet-backdrop" class="sheet-backdrop hidden" aria-hidden="true"></div>
+    <aside id="quick-sheet" class="mobile-bottom-sheet hidden" aria-label="Conexão Rápida" aria-modal="true" role="dialog">
+        <div class="sheet-handle-bar" id="sheet-drag-handle">
+            <span class="sheet-pill"></span>
+        </div>
+        <div class="sheet-content">
+            <div class="sheet-header">
+                <div>
+                    <span class="mono-eyebrow">ACESSO RÁPIDO · MATHEUS RIBEIRO</span>
+                    <h4>Links &amp; Produtos em Destaque</h4>
+                </div>
+                <button type="button" id="close-quick-sheet" class="sheet-close-btn" aria-label="Fechar painel">✕</button>
+            </div>
+            <div class="sheet-links-grid">
+                <a href="https://lypsyos.com/zenda" target="_blank" rel="noopener" class="sheet-action-card">
+                    <span class="sheet-icon">⚡</span>
+                    <div>
+                        <strong>Zenda CRM (Lypsyos)</strong>
+                        <span>Robô WhatsApp 24/7 &amp; Gestão</span>
+                    </div>
+                </a>
+                <a href="https://github.com/matribeirotech/monitor-cyd-resources" target="_blank" rel="noopener" class="sheet-action-card">
+                    <span class="sheet-icon">📟</span>
+                    <div>
+                        <strong>monitor-cyd-resources</strong>
+                        <span>Repositório Oficial v3.0 no GitHub</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/matheus-r-dev/" target="_blank" rel="noopener" class="sheet-action-card">
+                    <span class="sheet-icon">💼</span>
+                    <div>
+                        <strong>LinkedIn</strong>
+                        <span>Conecte-se comigo</span>
+                    </div>
+                </a>
+                <a href="mailto:matheusrds@lypsyos.com" class="sheet-action-card">
+                    <span class="sheet-icon">✉️</span>
+                    <div>
+                        <strong>matheusrds@lypsyos.com</strong>
+                        <span>Enviar e-mail direto</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ==================================================================
+         HIGH-RES IMAGE LIGHTBOX MODAL
+         ================================================================== -->
+    <div id="lightbox-modal" class="lightbox-modal hidden" role="dialog" aria-modal="true" aria-label="Visualizador de Imagem em Alta Resolução">
+        <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Fechar imagem">✕</button>
+        <div class="lightbox-stage">
+            <img id="lightbox-img" src="" alt="">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <!-- Toast Feedback -->
+    <div id="toast-notification" class="toast-notification" role="status" aria-live="polite"></div>
 
 </body>
 </html>
