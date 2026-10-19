@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ======================================================================
-     * 1. SCROLL REVEAL (IntersectionObserver)
+     * 1. SCROLL REVEAL (IntersectionObserver + 3D Mobile Spring)
      * ====================================================================== */
     const revealElements = document.querySelectorAll('.reveal-up');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -16,25 +16,44 @@ document.addEventListener('DOMContentLoaded', () => {
                     obs.unobserve(entry.target);
                 }
             });
-        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.1 });
 
         revealElements.forEach(el => revealObserver.observe(el));
     }
 
     /* ======================================================================
-     * 2. HEADER SCROLL STATE & ACTIVE SECTION SYNC (DESKTOP + MOBILE DOCK)
+     * 2. HEADER SCROLL, PROGRESS BAR & ACTIVE SECTION SYNC (DESKTOP + MOBILE)
      * ====================================================================== */
     const navbar = document.getElementById('navbar');
-    const onScrollHeader = () => {
+    const progressBar = document.getElementById('scroll-progress-bar');
+
+    const onScrollPage = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
         if (navbar) {
-            navbar.classList.toggle('scrolled', window.scrollY > 24);
+            navbar.classList.toggle('scrolled', scrollTop > 20);
+        }
+        if (progressBar) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+            progressBar.style.width = `${pct}%`;
         }
     };
-    onScrollHeader();
-    window.addEventListener('scroll', onScrollHeader, { passive: true });
+    onScrollPage();
+    window.addEventListener('scroll', onScrollPage, { passive: true });
+
+    const sectionNames = {
+        hero: '01 · INÍCIO',
+        lypsyos: '02 · LYPSYOS',
+        opensource: '03 · OPEN SOURCE',
+        sobre: '04 · STACK',
+        contato: '05 · CONTATO'
+    };
 
     const sections = document.querySelectorAll('main section[id]');
     const navItems = document.querySelectorAll('[data-section]');
+    const mobileSectionBadge = document.getElementById('mobile-section-badge');
+    const mobileSectionLabel = document.getElementById('mobile-section-label');
+    let currentActiveSection = 'hero';
 
     if (sections.length && navItems.length && 'IntersectionObserver' in window) {
         const sectionObserver = new IntersectionObserver((entries) => {
@@ -44,16 +63,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 navItems.forEach(item => {
                     item.classList.toggle('active', item.getAttribute('data-section') === activeId);
                 });
+
+                if (activeId !== currentActiveSection && mobileSectionLabel && sectionNames[activeId]) {
+                    currentActiveSection = activeId;
+                    mobileSectionLabel.textContent = sectionNames[activeId];
+                    if (mobileSectionBadge && !prefersReducedMotion) {
+                        mobileSectionBadge.classList.remove('badge-flip');
+                        void mobileSectionBadge.offsetWidth;
+                        mobileSectionBadge.classList.add('badge-flip');
+                    }
+                }
             });
-        }, { rootMargin: '-40% 0px -45% 0px' });
+        }, { rootMargin: '-38% 0px -45% 0px' });
 
         sections.forEach(section => sectionObserver.observe(section));
     }
 
     /* ======================================================================
-     * 3. SPOTLIGHT CARDS (Cursor Radial Glow on Desktop)
+     * 3. DESKTOP CURSOR SPOTLIGHT + MOBILE AUTO-SPOTLIGHT & TOUCH RIPPLE
      * ====================================================================== */
     const spotlightCards = document.querySelectorAll('.spotlight-card');
+
     if (window.matchMedia('(pointer: fine)').matches) {
         spotlightCards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -61,6 +91,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
                 card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
             });
+        });
+    }
+
+    // Mobile & Tablet Exclusive: Auto-illuminate cards in the center of viewport on scroll
+    if ('IntersectionObserver' in window && !prefersReducedMotion) {
+        const mobileFocusObserver = new IntersectionObserver((entries) => {
+            if (window.innerWidth > 1024) return;
+            entries.forEach(entry => {
+                entry.target.classList.toggle('mobile-active-card', entry.isIntersecting);
+            });
+        }, { rootMargin: '-28% 0px -28% 0px', threshold: 0.25 });
+
+        spotlightCards.forEach(card => mobileFocusObserver.observe(card));
+    }
+
+    // Mobile & Tablet Exclusive: Touch Ripple Wave on interactive elements
+    if (!prefersReducedMotion) {
+        const rippleTargets = document.querySelectorAll('.spotlight-card, .story-chip');
+        rippleTargets.forEach(target => {
+            target.addEventListener('touchstart', (e) => {
+                if (window.innerWidth > 1024 || !e.touches.length) return;
+                const touch = e.touches[0];
+                const rect = target.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                target.style.setProperty('--mouse-x', `${x}px`);
+                target.style.setProperty('--mouse-y', `${y}px`);
+
+                const ripple = document.createElement('span');
+                ripple.className = 'touch-ripple';
+                const size = Math.max(rect.width, rect.height) * 0.65;
+                ripple.style.width = `${size}px`;
+                ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+
+                target.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 680);
+            }, { passive: true });
         });
     }
 
@@ -85,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ======================================================================
-     * 5. ZENDA FLAGSHIP SCREEN SWITCHER & PIPELINE STEPS
+     * 5. ZENDA FLAGSHIP SCREEN SWITCHER & AUTO-CYCLING LIVE PIPELINE
      * ====================================================================== */
     const zendaSwitchBtns = document.querySelectorAll('[data-zenda-view]');
     const zendaViewCrm = document.getElementById('zenda-view-crm');
@@ -113,12 +183,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const flowSteps = document.querySelectorAll('.flow-step');
-    flowSteps.forEach(step => {
+    const flowSteps = Array.from(document.querySelectorAll('.flow-step'));
+    const zendaPipeline = document.getElementById('zenda-pipeline');
+    let flowInterval = null;
+    let currentStepIdx = 0;
+    let userPausedFlow = false;
+
+    const activateFlowStep = (idx, isAuto = false) => {
+        flowSteps.forEach((s, i) => {
+            const active = i === idx;
+            s.classList.toggle('active', active);
+            s.classList.toggle('auto-cycling', active && isAuto);
+        });
+    };
+
+    const startFlowCycle = () => {
+        if (prefersReducedMotion || userPausedFlow || flowInterval || !flowSteps.length) return;
+        activateFlowStep(currentStepIdx, true);
+        flowInterval = setInterval(() => {
+            currentStepIdx = (currentStepIdx + 1) % flowSteps.length;
+            activateFlowStep(currentStepIdx, true);
+        }, 3200);
+    };
+
+    const stopFlowCycle = () => {
+        if (flowInterval) {
+            clearInterval(flowInterval);
+            flowInterval = null;
+        }
+    };
+
+    flowSteps.forEach((step, idx) => {
         step.addEventListener('click', () => {
-            flowSteps.forEach(s => s.classList.toggle('active', s === step));
+            userPausedFlow = true;
+            stopFlowCycle();
+            currentStepIdx = idx;
+            activateFlowStep(idx, false);
         });
     });
+
+    if (zendaPipeline && 'IntersectionObserver' in window && !prefersReducedMotion) {
+        const pipelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startFlowCycle();
+                } else {
+                    stopFlowCycle();
+                }
+            });
+        }, { threshold: 0.3 });
+        pipelineObserver.observe(zendaPipeline);
+    }
 
     /* ======================================================================
      * 6. MONITOR-CYD-RESOURCES: LIVE RGB565 HARDWARE THEME SWITCHER
@@ -168,25 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ======================================================================
-     * 7. CYD GALLERY FILTERS & MOBILE SWIPE DOTS
+     * 7. CYD GALLERY FILTERS & MOBILE STACK DOMAIN SWITCHER
      * ====================================================================== */
     const filterChips = document.querySelectorAll('.filter-chip');
     const galleryItems = document.querySelectorAll('#cyd-gallery .gallery-item');
-    const cydGallery = document.getElementById('cyd-gallery');
-    const cydDotsContainer = document.getElementById('cyd-carousel-dots');
-
-    const rebuildMobileDots = () => {
-        if (!cydDotsContainer) return;
-        const visibleItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
-        cydDotsContainer.innerHTML = '';
-        visibleItems.forEach((_, idx) => {
-            const dot = document.createElement('span');
-            dot.className = `carousel-dot${idx === 0 ? ' active' : ''}`;
-            cydDotsContainer.appendChild(dot);
-        });
-    };
-
-    rebuildMobileDots();
 
     filterChips.forEach(chip => {
         chip.addEventListener('click', () => {
@@ -198,26 +298,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 const shouldShow = filter === 'all' || cat === filter;
                 item.classList.toggle('hidden', !shouldShow);
             });
-
-            if (cydGallery) cydGallery.scrollTo({ left: 0, behavior: 'smooth' });
-            rebuildMobileDots();
         });
     });
 
-    if (cydGallery && cydDotsContainer) {
-        cydGallery.addEventListener('scroll', () => {
-            const dots = cydDotsContainer.querySelectorAll('.carousel-dot');
-            if (!dots.length) return;
-            const scrollWidth = cydGallery.scrollWidth - cydGallery.clientWidth;
-            if (scrollWidth <= 0) return;
-            const progress = cydGallery.scrollLeft / scrollWidth;
-            const activeIdx = Math.min(dots.length - 1, Math.round(progress * (dots.length - 1)));
-            dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
-        }, { passive: true });
-    }
+    // Mobile & Tablet Exclusive Stack Filter
+    const stackTabBtns = document.querySelectorAll('[data-stack-filter]');
+    const stackDomainCards = document.querySelectorAll('[data-stack-domain]');
+
+    stackTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-stack-filter');
+            stackTabBtns.forEach(b => {
+                const active = b === btn;
+                b.classList.toggle('active', active);
+                b.setAttribute('aria-selected', String(active));
+            });
+
+            stackDomainCards.forEach(card => {
+                const domain = card.getAttribute('data-stack-domain');
+                const shouldShow = filter === 'all' || domain === filter;
+                card.classList.toggle('hidden', !shouldShow);
+                if (shouldShow && !prefersReducedMotion) {
+                    card.classList.remove('stack-filtered-in');
+                    void card.offsetWidth;
+                    card.classList.add('stack-filtered-in');
+                }
+            });
+        });
+    });
 
     /* ======================================================================
-     * 8. MOBILE EXCLUSIVE UX: NATIVE BOTTOM SHEET (WITH TOUCH SWIPE DOWN)
+     * 8. MOBILE & TABLET EXCLUSIVE UX: NATIVE BOTTOM SHEET (WITH SWIPE DOWN)
      * ====================================================================== */
     const openSheetBtn = document.getElementById('open-quick-sheet');
     const closeSheetBtn = document.getElementById('close-quick-sheet');
@@ -236,7 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeSheetBtn?.addEventListener('click', () => setQuickSheet(false));
     sheetBackdrop?.addEventListener('click', () => setQuickSheet(false));
 
-    // Suporte a gesto de arrastar para baixo (Swipe-Down to Dismiss)
     let touchStartY = 0;
     let touchDeltaY = 0;
 

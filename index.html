@@ -39,9 +39,12 @@
     </div>
 
     <!-- ==================================================================
-         HEADER / NAVBAR (Desktop Top Bar + Mobile Native App Header)
+         HEADER / NAVBAR (Desktop Top Bar + Mobile/Tablet Native App Header)
          ================================================================== -->
     <header id="navbar" class="top-header">
+        <div class="scroll-progress-track" aria-hidden="true">
+            <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+        </div>
         <div class="container header-inner">
             <a href="#hero" class="brand-identity" aria-label="Matheus Ribeiro - Ir para o topo">
                 <div class="brand-monogram">
@@ -69,14 +72,18 @@
                 <a href="#contato" class="nav-pill" data-section="contato">Contato</a>
             </nav>
 
-            <!-- Ações Direita (Desktop + Mobile Quick Action) -->
+            <!-- Ações Direita (Desktop + Mobile/Tablet Quick Action) -->
             <div class="header-actions">
                 <div class="live-availability" title="Disponível para novos projetos e oportunidades">
                     <span class="pulse-dot"></span>
                     <span class="availability-text">ONLINE · PRODUTOS &amp; OSS</span>
                 </div>
+                <div id="mobile-section-badge" class="mobile-section-badge" aria-live="polite">
+                    <span class="pulse-dot"></span>
+                    <span id="mobile-section-label">01 · INÍCIO</span>
+                </div>
                 <button type="button" id="open-quick-sheet" class="mobile-sheet-trigger" aria-label="Abrir conexão rápida">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                         <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span>Conectar</span>
@@ -93,23 +100,39 @@
         <!-- 01. HERO SECTION -->
         <section id="hero" class="hero-section">
             <div class="container">
-                <!-- Mobile Quick Story Strip (Exclusivo Mobile App UX) -->
-                <div class="mobile-story-strip" aria-label="Destaques Rápidos">
+                <!-- Mobile & Tablet Exclusive Quick-Launch Bento Strip -->
+                <div class="mobile-story-strip" aria-label="Destaques Rápidos Mobile">
                     <a href="#lypsyos" class="story-chip story-chip-active">
                         <span class="story-ring"><span class="story-icon">⚡</span></span>
-                        <span>Zenda CRM</span>
+                        <span class="story-text">
+                            <strong>Zenda CRM</strong>
+                            <small>WhatsApp 24/7</small>
+                        </span>
+                        <span class="story-arrow">↓</span>
                     </a>
                     <a href="#opensource" class="story-chip">
                         <span class="story-ring"><span class="story-icon">📟</span></span>
-                        <span>CYD Monitor v3</span>
+                        <span class="story-text">
+                            <strong>CYD Monitor v3</strong>
+                            <small>ESP32 + Flet PC</small>
+                        </span>
+                        <span class="story-arrow">↓</span>
                     </a>
                     <a href="https://lypsyos.com" target="_blank" rel="noopener" class="story-chip">
                         <span class="story-ring"><span class="story-icon">🌐</span></span>
-                        <span>Lypsyos.com</span>
+                        <span class="story-text">
+                            <strong>Lypsyos.com</strong>
+                            <small>Ecossistema SaaS</small>
+                        </span>
+                        <span class="story-arrow">↗</span>
                     </a>
                     <a href="https://github.com/matribeirotech" target="_blank" rel="noopener" class="story-chip">
                         <span class="story-ring"><span class="story-icon">🐙</span></span>
-                        <span>GitHub @z1po</span>
+                        <span class="story-text">
+                            <strong>GitHub Oficial</strong>
+                            <small>@matribeirotech</small>
+                        </span>
+                        <span class="story-arrow">↗</span>
                     </a>
                 </div>
 
@@ -182,15 +205,15 @@
                                 <div class="ide-tabs" role="tablist" aria-label="Arquitetura em Tempo Real">
                                     <button type="button" class="ide-tab active" role="tab" aria-selected="true" data-tab="zenda">
                                         <span class="tab-dot tab-dot-emerald"></span>
-                                        zenda_engine.ts
+                                        <span>zenda_engine.ts</span>
                                     </button>
                                     <button type="button" class="ide-tab" role="tab" aria-selected="false" data-tab="cyd">
                                         <span class="tab-dot tab-dot-amber"></span>
-                                        cyd_agent.py
+                                        <span>cyd_agent.py</span>
                                     </button>
                                     <button type="button" class="ide-tab" role="tab" aria-selected="false" data-tab="rls">
                                         <span class="tab-dot tab-dot-blue"></span>
-                                        security_rls.sql
+                                        <span>security_rls.sql</span>
                                     </button>
                                 </div>
                             </div>
@@ -356,7 +379,7 @@
                             </p>
 
                             <!-- Seletor de Fluxo em Tempo Real (Simulador Zenda) -->
-                            <div class="zenda-flow-interactive" aria-label="Pipeline de Automação do Zenda">
+                            <div class="zenda-flow-interactive" id="zenda-pipeline" aria-label="Pipeline de Automação do Zenda">
                                 <div class="flow-header">
                                     <span class="flow-title">PIPELINE DE EXECUÇÃO EM TEMPO REAL</span>
                                     <span class="flow-latency">Sync em 1.8s · Zero Overbooking</span>
@@ -364,23 +387,26 @@
                                 <div class="flow-steps">
                                     <div class="flow-step active" data-step="1">
                                         <span class="step-num">01</span>
-                                        <div>
+                                        <div class="step-body">
                                             <strong>Mensagem no WhatsApp (24/7)</strong>
                                             <p>URA inteligente interpreta intenção do cliente a qualquer hora sem intervenção manual.</p>
+                                            <span class="step-progress-bar"></span>
                                         </div>
                                     </div>
                                     <div class="flow-step" data-step="2">
                                         <span class="step-num">02</span>
-                                        <div>
+                                        <div class="step-body">
                                             <strong>Consulta Atômica de Disponibilidade</strong>
                                             <p>Trava transacional elimina 100% o risco de marcação dupla (double-booking).</p>
+                                            <span class="step-progress-bar"></span>
                                         </div>
                                     </div>
                                     <div class="flow-step" data-step="3">
                                         <span class="step-num">03</span>
-                                        <div>
+                                        <div class="step-body">
                                             <strong>Sincronização CRM + Push + Google Agenda</strong>
                                             <p>Atualiza faturamento previsto do dia, envia alerta push no celular e cria alarme no Google Calendar.</p>
+                                            <span class="step-progress-bar"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -456,28 +482,27 @@
                             </div>
 
                             <div class="preview-caption-bar">
-                                <span>✨ Interface real em produção na plataforma Lypsyos (clique na tela para ampliar)</span>
+                                <span>✨ Interface real em produção na plataforma Lypsyos (toque na tela para ampliar)</span>
                                 <span class="caption-tag">PWA + WebSocket</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- BENTO GRID / MOBILE SWIPE CAROUSEL: OS 6 MÓDULOS DO ECOSSISTEMA LYPSYOS -->
+                <!-- BENTO GRID: OS 6 MÓDULOS DO ECOSSISTEMA LYPSYOS -->
                 <div class="modules-section-header reveal-up">
                     <div>
                         <span class="mono-eyebrow">ARQUITETURA MODULAR LYPSYOS.COM</span>
                         <h3 class="subsection-title">Ferramentas e Módulos do Ecossistema</h3>
                     </div>
-                    <span class="mobile-swipe-hint" aria-hidden="true">Deslize para explorar →</span>
                 </div>
 
-                <div class="lypsyos-bento-grid swipe-carousel" id="lypsyos-carousel">
+                <div class="lypsyos-bento-grid" id="lypsyos-carousel">
                     <!-- Módulo 1 -->
                     <article class="bento-card spotlight-card reveal-up">
                         <div class="bento-card-top">
                             <span class="bento-icon">🤖</span>
-                            <span class="bento-category">AUTOMAÇÃO WHATSAPP</span>
+                            <span class="bento-category">01 · AUTOMAÇÃO WHATSAPP</span>
                         </div>
                         <h4>Robô Atendente 24/7 com URA Inteligente</h4>
                         <p>Conexão direta via QR Code criptografado. Responde clientes em menos de 2 segundos, filtra contatos pessoais automaticamente e higieniza números antes de gravar no CRM.</p>
@@ -491,7 +516,7 @@
                     <article class="bento-card spotlight-card reveal-up" style="--delay: 0.05s;">
                         <div class="bento-card-top">
                             <span class="bento-icon">📊</span>
-                            <span class="bento-category">GESTÃO &amp; FINANÇAS</span>
+                            <span class="bento-category">02 · GESTÃO &amp; FINANÇAS</span>
                         </div>
                         <h4>Central CRM Visual 3-em-1 &amp; Caixa</h4>
                         <p>Visualização instantânea alternável entre Cartões, Lista Cronológica e Tabela Compacta, com cálculo em tempo real do faturamento confirmado e entradas pendentes.</p>
@@ -505,7 +530,7 @@
                     <article class="bento-card spotlight-card reveal-up" style="--delay: 0.1s;">
                         <div class="bento-card-top">
                             <span class="bento-icon">📣</span>
-                            <span class="bento-category">MOTOR DE REATIVAÇÃO</span>
+                            <span class="bento-category">03 · MOTOR DE REATIVAÇÃO</span>
                         </div>
                         <h4>Campanhas Inteligentes &amp; Recuperação</h4>
                         <p>Isola automaticamente clientes sem agendar há mais de 30 dias e dispara campanhas personalizadas com a tag dinâmica <code>{nome_cliente}</code> e simulador de smartphone ao vivo.</p>
@@ -519,7 +544,7 @@
                     <article class="bento-card spotlight-card reveal-up" style="--delay: 0.15s;">
                         <div class="bento-card-top">
                             <span class="bento-icon">📱</span>
-                            <span class="bento-category">EXPERIÊNCIA NATIVA</span>
+                            <span class="bento-category">04 · EXPERIÊNCIA NATIVA</span>
                         </div>
                         <h4>Aplicativo Móvel Instalável (PWA)</h4>
                         <p>Arquitetura Progressive Web App com Service Workers para instalação em 1 toque no iOS e Android (<code>display: standalone</code>), tela cheia e carregamento em milissegundos.</p>
@@ -533,7 +558,7 @@
                     <article class="bento-card spotlight-card reveal-up" style="--delay: 0.2s;">
                         <div class="bento-card-top">
                             <span class="bento-icon">🔔</span>
-                            <span class="bento-category">PROATIVIDADE</span>
+                            <span class="bento-category">05 · PROATIVIDADE</span>
                         </div>
                         <h4>Web Push &amp; Sync Bidirecional Google Calendar</h4>
                         <p>Resumo matinal programável na tela de bloqueio do celular com a agenda e receita prevista do dia, além de sincronização em tempo real com o Google Agenda.</p>
@@ -547,7 +572,7 @@
                     <article class="bento-card spotlight-card reveal-up" style="--delay: 0.25s;">
                         <div class="bento-card-top">
                             <span class="bento-icon">🛡️</span>
-                            <span class="bento-category">SEGURANÇA BANCÁRIA</span>
+                            <span class="bento-category">06 · SEGURANÇA BANCÁRIA</span>
                         </div>
                         <h4>Lypsyos Security Guard &amp; Multitenant RLS</h4>
                         <p>Isolamento estrito de dados por organização utilizando Row-Level Security (RLS) no PostgreSQL/Supabase, criptografia JWT ponta a ponta, honeypots e travas anti-bot.</p>
@@ -665,7 +690,7 @@
                             >
                             <div class="tester-overlay-bar">
                                 <span id="cyd-live-theme-code" class="mono-code">HEX #00FF66 → RGB565 0x07EC · SCR_RESUMO</span>
-                                <span class="click-zoom-hint">🔍 Clique para ampliar</span>
+                                <span class="click-zoom-hint">🔍 Toque para ampliar</span>
                             </div>
                         </div>
                     </div>
@@ -687,7 +712,7 @@
                     </div>
                 </div>
 
-                <div class="cyd-gallery-grid swipe-carousel" id="cyd-gallery">
+                <div class="cyd-gallery-grid" id="cyd-gallery">
                     <!-- 1. Painel de Controle PC (Destaque Wide) -->
                     <figure class="gallery-item gallery-item-featured spotlight-card reveal-up" data-category="pc">
                         <div class="gallery-img-wrap">
@@ -842,9 +867,6 @@
                         </figcaption>
                     </figure>
                 </div>
-
-                <!-- Paginação Mobile do Carrossel CYD -->
-                <div class="mobile-carousel-dots" id="cyd-carousel-dots" aria-hidden="true"></div>
             </div>
         </section>
 
@@ -867,19 +889,21 @@
                 <div class="about-architecture-grid">
                     <!-- Coluna Bio & Filosofia de Produto -->
                     <div class="about-narrative spotlight-card reveal-up">
-                        <span class="mono-eyebrow">SOBRE MATHEUS RIBEIRO</span>
-                        <h3>Da concepção do produto ao deploy em nuvem e código aberto</h3>
+                        <div>
+                            <span class="mono-eyebrow">SOBRE MATHEUS RIBEIRO</span>
+                            <h3>Da concepção do produto ao deploy em nuvem e código aberto</h3>
 
-                        <div class="narrative-paragraphs">
-                            <p>
-                                Sou desenvolvedor Full Stack e estudante de <strong>Engenharia de Software</strong>, focado na construção de produtos digitais de alto valor percebido, plataformas SaaS multitenant e ferramentas open source de alta performance.
-                            </p>
-                            <p>
-                                No ecossistema <strong>Lypsyos</strong>, lidero o desenvolvimento de soluções como o <strong>Zenda</strong> — combinando automação conversacional em tempo real (WhatsApp 24/7 com resposta em menos de 2 segundos), arquitetura de dados segura com <strong>PostgreSQL Row-Level Security (RLS)</strong> e interfaces <strong>Mobile-First / PWA</strong> projetadas para usabilidade imediata.
-                            </p>
-                            <p>
-                                No universo <strong>Open Source</strong>, projeto soluções criativas de engenharia como o <code>monitor-cyd-resources</code>, unindo aplicações desktop reativas em <strong>Python (Flet / Flutter)</strong> a protocolos seriais de baixa latência e renderização gráfica embarcada em <strong>C++ / ESP32</strong>.
-                            </p>
+                            <div class="narrative-paragraphs">
+                                <p>
+                                    Sou desenvolvedor Full Stack e estudante de <strong>Engenharia de Software</strong>, focado na construção de produtos digitais de alto valor percebido, plataformas SaaS multitenant e ferramentas open source de alta performance.
+                                </p>
+                                <p>
+                                    No ecossistema <strong>Lypsyos</strong>, lidero o desenvolvimento de soluções como o <strong>Zenda</strong> — combinando automação conversacional em tempo real (WhatsApp 24/7 com resposta em menos de 2 segundos), arquitetura de dados segura com <strong>PostgreSQL Row-Level Security (RLS)</strong> e interfaces <strong>Mobile-First / PWA</strong> projetadas para usabilidade imediata.
+                                </p>
+                                <p>
+                                    No universo <strong>Open Source</strong>, projeto soluções criativas de engenharia como o <code>monitor-cyd-resources</code>, unindo aplicações desktop reativas em <strong>Python (Flet / Flutter)</strong> a protocolos seriais de baixa latência e renderização gráfica embarcada em <strong>C++ / ESP32</strong>.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="profile-metadata-grid">
@@ -904,7 +928,15 @@
 
                     <!-- Coluna Stack Tecnológica & Domínios -->
                     <div class="stack-domains-column">
-                        <div class="stack-domain-card spotlight-card reveal-up">
+                        <!-- Filtro Interativo Exclusivo Mobile/Tablet -->
+                        <div class="mobile-stack-tabs" role="tablist" aria-label="Filtrar domínios da stack tecnológica">
+                            <button type="button" class="stack-tab-btn active" data-stack-filter="all" role="tab" aria-selected="true">Toda Stack (3)</button>
+                            <button type="button" class="stack-tab-btn" data-stack-filter="frontend" role="tab" aria-selected="false">Front &amp; Mobile</button>
+                            <button type="button" class="stack-tab-btn" data-stack-filter="backend" role="tab" aria-selected="false">Back &amp; IA</button>
+                            <button type="button" class="stack-tab-btn" data-stack-filter="cloud" role="tab" aria-selected="false">Cloud &amp; RLS</button>
+                        </div>
+
+                        <div class="stack-domain-card spotlight-card reveal-up" data-stack-domain="frontend">
                             <div class="domain-header">
                                 <span class="domain-code">01 // FRONT-END, MOBILE &amp; UI/UX</span>
                                 <span class="domain-badge">INTERFACES PREMIUM</span>
@@ -922,7 +954,7 @@
                             </div>
                         </div>
 
-                        <div class="stack-domain-card spotlight-card reveal-up" style="--delay: 0.08s;">
+                        <div class="stack-domain-card spotlight-card reveal-up" data-stack-domain="backend" style="--delay: 0.08s;">
                             <div class="domain-header">
                                 <span class="domain-code">02 // BACK-END, AUTOMAÇÃO &amp; SISTEMAS</span>
                                 <span class="domain-badge">ALTA DISPONIBILIDADE</span>
@@ -940,7 +972,7 @@
                             </div>
                         </div>
 
-                        <div class="stack-domain-card spotlight-card reveal-up" style="--delay: 0.16s;">
+                        <div class="stack-domain-card spotlight-card reveal-up" data-stack-domain="cloud" style="--delay: 0.16s;">
                             <div class="domain-header">
                                 <span class="domain-code">03 // DATA, CLOUD &amp; DEVSECOPS</span>
                                 <span class="domain-badge">MULTITENANT RLS</span>
@@ -1097,35 +1129,35 @@
     </footer>
 
     <!-- ==================================================================
-         MOBILE EXCLUSIVE UX: NATIVE APP BOTTOM NAVIGATION DOCK
+         MOBILE & TABLET EXCLUSIVE UX: NATIVE APP BOTTOM NAVIGATION DOCK
          ================================================================== -->
-    <nav class="mobile-bottom-dock" aria-label="Navegação Mobile App">
-        <a href="#hero" class="dock-item active" data-section="hero">
+    <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Navegação Mobile App">
+        <a href="#hero" class="dock-item active" data-section="hero" data-index="0">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <span>Início</span>
         </a>
-        <a href="#lypsyos" class="dock-item" data-section="lypsyos">
+        <a href="#lypsyos" class="dock-item" data-section="lypsyos" data-index="1">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <span>Lypsyos</span>
         </a>
-        <a href="#opensource" class="dock-item" data-section="opensource">
+        <a href="#opensource" class="dock-item" data-section="opensource" data-index="2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="3" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8 21h8M12 17v4M7 10l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <span>Open Source</span>
         </a>
-        <a href="#sobre" class="dock-item" data-section="sobre">
+        <a href="#sobre" class="dock-item" data-section="sobre" data-index="3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <span>Stack</span>
         </a>
-        <a href="#contato" class="dock-item" data-section="contato">
+        <a href="#contato" class="dock-item" data-section="contato" data-index="4">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1134,7 +1166,7 @@
     </nav>
 
     <!-- ==================================================================
-         MOBILE EXCLUSIVE UX: INTERACTIVE QUICK-CONNECT BOTTOM SHEET
+         MOBILE & TABLET EXCLUSIVE UX: INTERACTIVE QUICK-CONNECT BOTTOM SHEET
          ================================================================== -->
     <div id="quick-sheet-backdrop" class="sheet-backdrop hidden" aria-hidden="true"></div>
     <aside id="quick-sheet" class="mobile-bottom-sheet hidden" aria-label="Conexão Rápida" aria-modal="true" role="dialog">
